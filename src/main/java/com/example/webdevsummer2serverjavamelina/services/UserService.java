@@ -17,11 +17,13 @@ public class UserService {
 	UserRepository userRepository;
 	
 	// execute whenever you see: http://localhost:8080/register
-	
-	@PostMapping("/register")
+	@PostMapping("/api/register")
 	// instantiate user object and getting the user from the Request Body 
 	public User register(@RequestBody User user) {
 		// save: returns instances of the same thing that it instantiates -- users
 		return userRepository.save(user);
 	}
+	
+	// retrieving dada - dynamic, meant for api
+	//@GepMapping("/api/user")
 }
