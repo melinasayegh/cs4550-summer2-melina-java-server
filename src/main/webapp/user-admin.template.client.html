@@ -1,103 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
-
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>User Admin</title>
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+        <!--CSS-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
-
         <!--
-
         <link href="user-admin.style.client.css" rel="stylesheet" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="../services/user.service.client.js"></script>
         <script src="user-admin.controller.client.js"></script>
-
         -->
 
+        <title>User Admin</title>
     </head>
 
     <body>
         <h1>User Admin</h1>
 
-
         <table border="1">
             <thead>
+
+                <!-- Titles - 1st row in Table-->
                 <tr class="table">
                     <th>Username</th>
                     <th>Password</th>
-                    <th>First</th>
-                    <th>Last</th>
-                    <!--<th>Email</th>-->
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Date of Birth</th>
                     <th>Role</th>
                     <th>&nbsp;</th>
                 </tr>
 
-                <!--
-                <tr class="wbdv-form">
-                    <th><input/></th>
-                    <th><input/></th>
-                    <th><input/></th>
-                    <th><input/></th>
-                    <th><input/></th>
-                    <th>
-                        <select>
-                            <option value ="FACULTY">
-                                Faculty
-                            <option/>
-                            <option value ="STUDENT">
-                                Student
-                            <option/>
-                        </select>
-                    </th>
-                    <td>
-                        <button>Update</button>
-                        <button>Create</button>
-                    </td>
-                </tr>
-                -->
-
+                <!-- Input Fields - 2nd row in Table-->
                 <tr class="wbdv-form">
                     <td>
                         <input id="usernameFld"
-                               class="form-control"
-                               placeholder="Username" />
+                               placeholder="Username"
+                               class="form-control input-small" />
                     </td>
                     <td>
                         <input id="passwordFld"
-                               class="form-control"
-                               placeholder="Password" />
+                               placeholder="Password"
+                               class="form-control input-small" />
                     </td>
                     <td>
                         <input id="firstNameFld"
-                               class="form-control"
-                               placeholder="First Name" />
+                               placeholder="First Name"
+                               class="form-control input-small" />
                     </td>
                     <td>
                         <input id="lastNameFld"
-                               class="form-control"
-                               placeholder="Last Name" />
+                               placeholder="Last Name"
+                               class="form-control input-small" />
                     </td>
                     <td>
-                        <select id="roleFld"
-                                class="form-control">
-                            <option value="">Select --</option>
-                            <option value="FACULTY">Faculty</option>
-                            <option value="STUDENT">Student</option>
-                            <option value="ADMIN">Admin</option>
+                        <input id="emailFld"
+                               placeholder="Email"
+                               class="form-control input-small" />
+                    </td>
+                    <td>
+                        <input id="dobFld"
+                               type="date"
+                               value="0000-00-00"/>
+                    </td>
+                    <td>
+                        <select name="role"
+                                id="roleFld"
+                                class="form-control input-small">
+                                <option value="">
+                                    Select --
+                                </option>
+                                <option value="FACULTY">
+                                    Faculty
+                                </option>
+                                <option value="STUDENT">
+                                    Student
+                                </option>
+                                <option value="ADMIN">
+                                    Admin
+                                </option>
                         </select>
                     </td>
                     <td>
-                        <span class="float-right" style="white-space: nowrap">
+                        <button>Search</button>
+                        <button>Create</button>
+                        <button>Edit</button>
+                        <!--<span class="float-right"
+                              style="white-space: nowrap">
                             <i class="fa-2x fa fa-search wbdv-search"></i>
                             <i class="fa-2x fa fa-plus   wbdv-create"></i>
                             <i class="fa-2x fa fa-check  wbdv-update"></i>
                         </span>
+                        -->
                     </td>
                 </tr>
 
@@ -110,7 +109,21 @@
                     <td>*****</td>
                     <td>Jane</td>
                     <td>Doe</td>
-                    <!--<td>jane@doe.com</td>-->
+                    <td>jane@doe.com</td>
+                    <td>01/01/1990</td>
+                    <td>Admin</td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>john.doe</td>
+                    <td>*****</td>
+                    <td>John</td>
+                    <td>Doe</td>
+                    <td>john@doe.com</td>
+                    <td>01/01/1990</td>
                     <td>Faculty</td>
                     <td>
                         <button>Edit</button>
@@ -123,5 +136,21 @@
             </tfoot>
 
         </table>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous">
+
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous">
+
+        </script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous">
+
+        </script>
     </body>
 </html>
