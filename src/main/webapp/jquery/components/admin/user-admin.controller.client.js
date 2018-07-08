@@ -7,7 +7,10 @@
     var $firstNameFld, $lastNameFld, $emailFld;
     var $removeBtn, $editBtn, $createBtn;
     var $userRowTemplate, $tbody;
+
+    // this is the user-input row
     var template;
+
     var userService = new AdminUserServiceClient();
 
 
@@ -83,7 +86,16 @@
     // User -> void
     // updates the form with the user properties
     function renderUser(user) {
-        //
+        var clone = template.clone();
+
+        clone.attr('id', user.id);
+
+        clone.find('.delete').click(deleteUser);
+        clone.find('.edit').click(editUser);
+
+        clone.find('.username')
+            .html(user.username);
+        tbody.append(clone);
     }
 
     // [User] -> void
