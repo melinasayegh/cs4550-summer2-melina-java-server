@@ -1,110 +1,83 @@
-<h1>User Admin</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<table border="1">
-    <thead>
-    <tr>
-        <th>Username</th>
-        <th>Password</th>
-        <th>First</th>
-        <th>Last</th>
-        <th>Email</th>
-        <th>Role</th>
-        <th>&nbsp;</th>
-    </tr>
-    <tr>
-        <th><input/></th>
-        <th><input/></th>
-        <th><input/></th>
-        <th><input/></th>
-        <th><input/></th>
-        <th>
-            <select>
-                <option value ="FACULTY">
-                    Faculty
-                <option/>
-                <option value ="STUDENT">
-                    Student
-                <option/>
-            </select>
-        </th>
-        <td>
-            <button>Update</button>
-            <button>Create</button>
-        </td>
-    </tr>
-    </thead>
+    <head>
 
-    <tbody>
-    <tr>
-        <td>alice</td>
-        <td>******</td>
-        <td>Alice</td>
-        <td>Wonderland</td>
-        <td>alice@wonderland.com</td>
-        <td>Faculty</td>
-        <td>
-            <button>Edit</button>
-            <button>Delete</button>
+        <meta charset="UTF-8">
 
-        </td>
-    </tr>
-    </tbody>
+        <title>User Admin</title>
 
-    <tfoot>
-=======
-<h1>Usre Admin</h1>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
-<table border="1">
-    <thead>
-        <tr>
-            <th>Username</th>
-            <th>Password</th>
-            <th>First</th>
-            <th>Last</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>&nbsp;</th>
-        </tr>
-        <tr>
-            <th><input/></th>
-            <th><input/></th>
-            <th><input/></th>
-            <th><input/></th>
-            <th><input/></th>
-            <th>
-                <select>
-                    <option value ="FACULTY">
-                        Faculty
-                    <option/>
-                    <option value ="STUDENT">
-                        Student
-                    <option/>
-                </select>
-            </th>
-            <td>
-                <button>Update</button>
-                <button>Create</button>
-            </td>
-        </tr>
-    </thead>
 
-    <tbody>
-        <tr>
-            <td>alice</td>
-            <td>******</td>
-            <td>Alice</td>
-            <td>Wonderland</td>
-            <td>alice@wonderland.com</td>
-            <td>Faculty</td>
-            <td>
-                <button>Edit</button>
-                <button>Delete</button>
+        <!--
 
-            </td>
-        </tr>
+        <link href="user-admin.style.client.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="../services/user.service.client.js"></script>
+        <script src="user-admin.controller.client.js"></script>
 
-    </tbody>
+        -->
 
-    <tfoot>
-    </tfoot>
-</table>
+    </head>
+
+    <body>
+        <h1>User Admin</h1>
+
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>First</th>
+                    <th>Last</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>&nbsp;</th>
+                </tr>
+                <tr>
+                    <th><input/></th>
+                    <th><input/></th>
+                    <th><input/></th>
+                    <th><input/></th>
+                    <th><input/></th>
+                    <th>
+                        <select>
+                            <option value ="FACULTY">
+                                Faculty
+                            <option/>
+                            <option value ="STUDENT">
+                                Student
+                            <option/>
+                        </select>
+                    </th>
+                    <td>
+                        <button>Update</button>
+                        <button>Create</button>
+                    </td>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>jane.doe</td>
+                    <td>*****</td>
+                    <td>Jane</td>
+                    <td>Doe</td>
+                    <td>jane@doe.com</td>
+                    <td>Faculty</td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+            </tfoot>
+
+        </table>
+    </body>
+</html>
