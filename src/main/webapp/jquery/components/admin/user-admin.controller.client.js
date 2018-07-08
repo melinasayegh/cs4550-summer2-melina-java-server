@@ -5,6 +5,7 @@
 
     var $usernameFld, $passwordFld;
     var $firstNameFld, $lastNameFld, $emailFld;
+
     var $removeBtn, $editBtn, $createBtn;
     var $userRowTemplate, $tbody;
 
