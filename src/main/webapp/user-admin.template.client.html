@@ -1,110 +1,148 @@
-<h1>User Admin</h1>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<table border="1">
-    <thead>
-    <tr>
-        <th>Username</th>
-        <th>Password</th>
-        <th>First</th>
-        <th>Last</th>
-        <th>Email</th>
-        <th>Role</th>
-        <th>&nbsp;</th>
-    </tr>
-    <tr>
-        <th><input/></th>
-        <th><input/></th>
-        <th><input/></th>
-        <th><input/></th>
-        <th><input/></th>
-        <th>
-            <select>
-                <option value ="FACULTY">
-                    Faculty
-                <option/>
-                <option value ="STUDENT">
-                    Student
-                <option/>
-            </select>
-        </th>
-        <td>
-            <button>Update</button>
-            <button>Create</button>
-        </td>
-    </tr>
-    </thead>
+        <!--CSS-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link href="user-admin.style.client.css" rel="stylesheet" />
 
-    <tbody>
-    <tr>
-        <td>alice</td>
-        <td>******</td>
-        <td>Alice</td>
-        <td>Wonderland</td>
-        <td>alice@wonderland.com</td>
-        <td>Faculty</td>
-        <td>
-            <button>Edit</button>
-            <button>Delete</button>
+        <!--
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="../services/user.service.client.js"></script>
+        <script src="user-admin.controller.client.js"></script>
+        -->
 
-        </td>
-    </tr>
-    </tbody>
+        <title>User Admin</title>
+    </head>
 
-    <tfoot>
-=======
-<h1>Usre Admin</h1>
+    <body>
+        <div class="container">
+            <h1 id="title">User Admin</h1>
+            <table class="table" border="1">
+                <thead>
+                    <!-- Titles - 1st row in Table-->
+                    <tr class="table">
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Date of Birth</th>
+                        <th>Role</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    <!-- Input Fields - 2nd row in Table-->
+                    <tr class="wbdv-form">
+                        <td>
+                            <input id="usernameFld"
+                                   placeholder="Username"
+                                   class="form-control input-small" />
+                        </td>
+                        <td>
+                            <input id="passwordFld"
+                                   placeholder="Password"
+                                   class="form-control input-small" />
+                        </td>
+                        <td>
+                            <input id="firstNameFld"
+                                   placeholder="First Name"
+                                   class="form-control input-small" />
+                        </td>
+                        <td>
+                            <input id="lastNameFld"
+                                   placeholder="Last Name"
+                                   class="form-control input-small" />
+                        </td>
+                        <td>
+                            <input id="emailFld"
+                                   placeholder="Email"
+                                   class="form-control input-small" />
+                        </td>
+                        <td>
+                            <input id="dobFld"
+                                   type="date"
+                                   value="0000-00-00"/>
+                        </td>
+                        <td>
+                            <select name="role"
+                                    id="roleFld"
+                                    class="form-control input-small">
+                                    <option value="">
+                                        Select --
+                                    </option>
+                                    <option value="FACULTY">
+                                        Faculty
+                                    </option>
+                                    <option value="STUDENT">
+                                        Student
+                                    </option>
+                                    <option value="ADMIN">
+                                        Admin
+                                    </option>
+                            </select>
+                        </td>
+                        <td>
+                            <button>Search</button>
+                            <button>Create</button>
+                            <button>Edit</button>
+                            <!--<span class="float-right"
+                                  style="white-space: nowrap">
+                                <i class="fa-2x fa fa-search wbdv-search"></i>
+                                <i class="fa-2x fa fa-plus   wbdv-create"></i>
+                                <i class="fa-2x fa fa-check  wbdv-update"></i>
+                            </span>
+                            -->
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>jane.doe</td>
+                        <td>*****</td>
+                        <td>Jane</td>
+                        <td>Doe</td>
+                        <td>jane@doe.com</td>
+                        <td>01/01/1990</td>
+                        <td>Admin</td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>john.doe</td>
+                        <td>*****</td>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <td>john@doe.com</td>
+                        <td>01/01/1990</td>
+                        <td>Faculty</td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                    crossorigin="anonymous">
 
-<table border="1">
-    <thead>
-        <tr>
-            <th>Username</th>
-            <th>Password</th>
-            <th>First</th>
-            <th>Last</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>&nbsp;</th>
-        </tr>
-        <tr>
-            <th><input/></th>
-            <th><input/></th>
-            <th><input/></th>
-            <th><input/></th>
-            <th><input/></th>
-            <th>
-                <select>
-                    <option value ="FACULTY">
-                        Faculty
-                    <option/>
-                    <option value ="STUDENT">
-                        Student
-                    <option/>
-                </select>
-            </th>
-            <td>
-                <button>Update</button>
-                <button>Create</button>
-            </td>
-        </tr>
-    </thead>
+            </script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                    crossorigin="anonymous">
 
-    <tbody>
-        <tr>
-            <td>alice</td>
-            <td>******</td>
-            <td>Alice</td>
-            <td>Wonderland</td>
-            <td>alice@wonderland.com</td>
-            <td>Faculty</td>
-            <td>
-                <button>Edit</button>
-                <button>Delete</button>
+            </script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                    crossorigin="anonymous">
 
-            </td>
-        </tr>
-
-    </tbody>
-
-    <tfoot>
-    </tfoot>
-</table>
+            </script>
+    </body>
+</html>
