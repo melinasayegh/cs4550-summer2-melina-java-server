@@ -1,6 +1,9 @@
 package com.example.webdevsummer2serverjavamelina.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,6 +27,10 @@ public class UserService {
 		return userRepository.save(user);
 	}
 	
-	// retrieving dada - dynamic, meant for api
-	//@GepMapping("/api/user")
+	// retrieving data - dynamic, meant for api
+	@GetMapping("/api/user")
+	public List<User> findAllUsers() {
+		// returns iterable, so cast to List of Users
+		return (List<User>) userRepository.findAll();
+	}
 }
