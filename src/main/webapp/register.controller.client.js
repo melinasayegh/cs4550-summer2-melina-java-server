@@ -2,26 +2,37 @@
 
 (function () {
 
-    var registerBtn =  $('#registerBtn')
-    var usernameFld =  $('#username');
-    var passwordFld =  $('#password');
+    var registerBtn  = $('#registerBtn')
+    var usernameFld  = $('#username');
+    var passwordFld  = $('#password');
     var password2Fld = $('#password2');
+    var emailFld     = $('#email');
+    var firstNameFld = $('#firstName');
+    var lastNameFld  = $('#lastName');
+
+
 
     registerBtn.click(registerHandler);
 
     function registerHandler() {
-        var usernameStr = usernameFld.val();
-        var passwordStr = passwordFld.val();
+        var usernameStr  = usernameFld.val();
+        var passwordStr  = passwordFld.val();
         var password2Str = password2Fld.val();
+        var firstNameStr = firstNameFld.val();
+        var lastNameStr  = lastNameFld.val();
+        var emailStr     = emailFld.val();
 
         var userObj = {
-            username: usernameStr,
-            password: passwordStr
+            username:  usernameStr,
+            password:  passwordStr,
+            firstName: firstNameStr,
+            lastName:  lastNameStr,
+            email:     emailStr
         }
 
         var userObjStr = JSON.stringify(userObj);
 
-        fetch('/register', {
+        fetch('/api/register', {
             method: 'post',
             body: userObjStr,
             headers: {

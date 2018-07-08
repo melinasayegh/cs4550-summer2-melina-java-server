@@ -1,13 +1,26 @@
 package com.example.webdevsummer2serverjavamelina.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
+// this is a table, needs to be stored in database
+// name of table is name of class
+@Entity
 public class User {
+	
+	@Id // unique identifier
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	private String username;
 	private String password;
 	private String firstName;
 	private String lastName;
 	private String email;
-	// DOB
-	// Address
+	// add DOB
+	// add Address
 	
 	// getters & setters
 	public String getUsername() {
@@ -39,5 +52,11 @@ public class User {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 }
