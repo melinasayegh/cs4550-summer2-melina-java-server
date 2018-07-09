@@ -38,19 +38,32 @@
             headers: {
                 'Content-Type': 'application/json'
             }
-        });
+        }).then(registrationSuccessful, registrationFailed);
+    }
+
+    function registrationsSuccessful() {
+        alert("You have been registered.")
+        window.location.href("/../components/profile/profile.template.client.html");
+    }
+
+    function registrationFailed() {
+
+        // same username as already in database
+        if (usernameFld.val() == "fail") {
+            alert("Registration Failed - please confirm passwords are the same.")
+        }
+
+        // if passwords don't match
+        if (passwordFld.val() !== password2Fld.val()) {
+            alert("Registration Failed - Please confirm passwords are the same.")
+        }
     }
 
     function confirmPasswords() {
         // if passwords don't match
-        if (passwordFld !== password2Fld) {
-            // then don't create an account
+        if (passwordFld.val() !== password2Fld.val()) {
             // error message
-            alert('Passwords do not match.')
-        // if passwords do match
-        } else {
-            //continue
+            alert('Passwords do not match')
         }
-
     }
 })()
