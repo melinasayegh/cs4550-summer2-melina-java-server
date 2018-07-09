@@ -16,18 +16,20 @@
     <body>
         <div class="container">
             <h1 id="title">User Admin</h1>
-            <table class="table" border="1">
+            <table class="table-responsive table-hover table-striped">
                 <thead>
                     <!-- Titles - 1st row in Table-->
-                    <tr class="table">
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Date of Birth</th>
-                        <th>Role</th>
-                        <th>&nbsp;</th>
+                    <tr>
+                        <th scope="col">Username</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <!--
+                        <th scope="col">Email</th>
+                        <th scope="col">Date of Birth</th>
+                        -->
+                        <th scope="col">Role</th>
+                        <th scope="col">&nbsp;</th>
                     </tr>
                     <!-- Input Fields - 2nd row in Table-->
                     <tr class="wbdv-form">
@@ -50,6 +52,7 @@
                             <input id="lastNameFld"
                                    placeholder="Last Name"
                                    class="form-control input-small" />
+                        <!--
                         </td>
                         <td>
                             <input id="emailFld"
@@ -60,7 +63,7 @@
                             <input id="dobFld"
                                    type="date"
                                    value="0000-00-00"/>
-                        </td>
+                        </td>-->
                         <td>
                             <select name="role"
                                     id="roleFld"
@@ -82,27 +85,47 @@
                         <td>
                             <span class="float-right"
                                   style="white-space: nowrap">
-                                <button class="fa-2x fa fa-search wbdv-search">Search</button>
-                                <button class="fa-2x fa fa-plus   wbdv-create">Create</button>
-                                <button class="fa-2x fa fa-check  wbdv-update">Update</button>
+                                <button class="fa-2x fa fa-search search"></button>
+                                <button class="fa-2x fa fa-plus   create"></button>
+                                <button class="fa-2x fa fa-check  update"></button>
                             </span>
                         </td>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="template">
-                        <td>jane.doe</td>
+                        <th scope="row">jane.doe</th>
                         <td>*****</td>
                         <td>Jane</td>
                         <td>Doe</td>
+                        <!--
                         <td>jane@doe.com</td>
                         <td>01/01/1990</td>
+                        -->
                         <td>Admin</td>
                         <td>
                             <span class="float-right"
                                   style="white-space: nowrap">
-                                <button class="fa-2x fa fa-times wbdv-remove">Remove</button>
-                                <button class="fa-2x fa fa-pencil wbdv-edit">Edit</button>
+                                <button class="fa-2x fa fa-times  remove"></button>
+                                <button class="fa-2x fa fa-pencil edit"></button>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr class="template">
+                        <th scope="row">jane.doe</th>
+                        <td>*****</td>
+                        <td>John</td>
+                        <td>Doe</td>
+                        <!--
+                        <td>jane@doe.com</td>
+                        <td>01/01/1990</td>
+                        -->
+                        <td>Admin</td>
+                        <td>
+                            <span class="float-right"
+                                  style="white-space: nowrap">
+                                <button class="fa-2x fa fa-times  remove"></button>
+                                <button class="fa-2x fa fa-pencil edit"></button>
                             </span>
                         </td>
                     </tr>
