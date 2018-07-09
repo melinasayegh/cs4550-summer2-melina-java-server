@@ -9,79 +9,91 @@
         <!--CSS-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link href="register.style.client.css" rel="stylesheet" />
 
         <title>Registration Page</title>
     </head>
 
     <body>
+        <div class="container">
+            <h1>Create an Account</h1>
 
-        <h1>Create an Account</h1>
+            <form class="form-horizontal">
+                <div class ="form-group row">
+                    <label class="control-label col-sm-2" for="firstName">
+                        First Name
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="" id="firstName"/>
+                    </div>
+                </div>
 
-        <div>
-            <label for="firstName">
-                First Name
-            </label>
-            <input type="text"
-                   placeholder=""
-                   id="firstName"/>
-        </div>
+                <div class ="form-group row">
+                    <label class="control-label col-sm-2" for="lastName">
+                        Last Name
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="" id="lastName"/>
+                    </div>
+                </div>
 
-        <div>
-            <label for="lastName">
-                Last Name
-            </label>
-            <input type="text"
-                   placeholder=""
-                   id="lastName"/>
-        </div>
+                <div class ="form-group row">
+                    <label class="control-label col-sm-2" for="email">
+                        Email
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="" id="email"/>
+                    </div>
+                </div>
 
-        <div>
-            <label for="email">
-                Email
-            </label>
-            <input type="text"
-                   placeholder=""
-                   id="email"/>
-        </div>
+                <div class ="form-group row">
+                    <label class="control-label col-sm-2"for="username">
+                        Username
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="" id="username"/>
+                    </div>
+                </div>
 
-        <div>
-            <label for="username">
-                Username
-            </label>
-            <input type="text"
-                   placeholder=""
-                   id="username"/>
-        </div>
+                <div class ="form-group row">
+                    <label class="control-label col-sm-2" for="password">
+                        Password
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" placeholder="qwerty" id="password"/>
+                    </div>
+                </div>
 
-        <div>
-            <label for="password">
-                Password
-            </label>
-            <input type="password"
-                   placeholder="qwerty"
-                   id="password"/>
-        </div>
+                <div class ="form-group row">
+                    <label class="control-label col-sm-2" for="password2">
+                        Validate Password
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" placeholder="qwerty" id="password2"/>
+                    </div>
+                </div>
 
-        <div>
-            <label for="password2">
-                Validate Password
-            </label>
-            <input type="password"
-                   placeholder="qwerty"
-                   id="password2"/>
-        </div>
+                <div class="form-group row">
+                    <div class="col-sm-10 offset-sm-2">
+                        <button class="registerBtn" id="registerBtn">
+                            Register
+                        </button>
+                    </div>
+                </div>
 
-        <div>
-            <button id="registerBtn">
-                Register
-            </button>
-        </div>
+                <div class="form-group row">
+                    <label class="col-sm-10 offset-sm-2">Already have an account?
 
-        <div>
-            <p>Already have an account?</p>
-            <a href="../components/login/login.template.client.html">
-                Login
-            </a>
+                        <button class="loginBtn" id="loginBtn">
+                            Login
+                        </button>
+
+                        <a href="../components/login/login.template.client.html">
+                            Login
+                        </a>
+                    </label>
+                </div>
+            </form>
         </div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

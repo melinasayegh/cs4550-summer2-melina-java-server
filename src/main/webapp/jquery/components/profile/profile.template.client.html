@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!--CSS-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link href="profile.style.client.css" rel="stylesheet" />
+
+        <title>Profile Page</title>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <h1>Profile</h1>
+
+            <form class="form-horizontal">
+                <div class ="form-group row">
+                    <label class="control-label col-sm-2" for="userName">
+                        Username
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="" id="userName"/>
+                    </div>
+                </div>
+
+                <div class ="form-group row">
+                    <label class="control-label col-sm-2" for="phone">
+                        Phone
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="" id="phone"/>
+                    </div>
+                </div>
+
+                <div class ="form-group row">
+                    <label class="control-label col-sm-2" for="email">
+                        Email
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="" id="email"/>
+                    </div>
+                </div>
+
+                <div class ="form-group row">
+                    <label class="control-label col-sm-2"for="role">
+                        Role
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" placeholder="" id="role"/>
+                    </div>
+                </div>
+
+                <div class ="form-group row">
+                    <label class="control-label col-sm-2" for="dob">
+                        Date of Birth
+                    </label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" placeholder="qwerty" id="dob"/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-10 offset-sm-2">
+                        <button class="updateBtn" id="updateBtn">
+                            Update
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-10 offset-sm-2">
+                        <button class="logoutBtn" id="logoutBtn">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="profile.controller.client.js"></script>
+    </body>
+</html>
