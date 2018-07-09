@@ -1,5 +1,7 @@
 package com.example.webdevsummer2serverjavamelina.models;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,11 +20,17 @@ public class User {
 	private String password;
 	private String firstName;
 	private String lastName;
+	private String phone;
 	private String email;
-	// add DOB
-	// add Address
+	private Date DOB;
 	
 	// getters & setters
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -47,16 +55,22 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Integer getId() {
-		return id;
+	public Date getDOB() {
+		return DOB;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setDOB(Date dOB) {
+		DOB = dOB;
 	}
 }

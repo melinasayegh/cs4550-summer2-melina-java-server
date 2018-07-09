@@ -3,6 +3,7 @@ package com.example.webdevsummer2serverjavamelina.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,4 +34,23 @@ public class UserService {
 		// returns iterable, so cast to List of Users
 		return (List<User>) userRepository.findAll();
 	}
+	
+	/*
+	@GetMapping("/api/user/{userId}")
+	public User findUserById(@RequestBody Integer userId) {
+		return (User) userRepository.findById(userId);
+	}
+	
+	@PostMapping("/api/user/{userId}")
+	public updateUser(@RequestBody Integer userId) {
+		return ;
+	}
+	
+	@DeleteMapping("/api/user/{userId}")
+	public deleteUser(@RequestBody Integer userId) {
+		return ;
+	}
+	
+	*/
+	
 }
