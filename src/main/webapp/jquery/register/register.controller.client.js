@@ -41,7 +41,7 @@
         }).then(registrationSuccessful, registrationFailed);
     }
 
-    function registrationsSuccessful() {
+    function registrationSuccessful() {
         alert("You have been registered.")
         window.location.href("/../components/profile/profile.template.client.html");
     }
