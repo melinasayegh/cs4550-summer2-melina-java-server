@@ -6,6 +6,10 @@
     font-family: "Open Sans", Helvetica, sans-serif;
 }
 
+.container {
+    padding: 20px;
+}
+
 h1 {
     font-family: "Open Sans", Helvetica, sans-serif;
     font-size: 40px;
@@ -20,6 +24,38 @@ body {
     font-style: normal;
     font-weight: normal;
 }
+
+label {
+    width: 25%;
+    float:left;
+    padding: 10px;
+}
+
+
+input {
+     width: 75%;
+     float:left;
+     padding: 10px;
+     display: inline-block;
+     border: none;
+     background: #f1f1f1;
+ }
+
+input:focus {
+    background: #dddddd;
+}
+
+registerBtn {
+
+}
+
+login {
+    width: 25%;
+    float:left;
+    padding: 20px;
+}
+
+
 
 /* style the top navigation bar */
 .topnav {

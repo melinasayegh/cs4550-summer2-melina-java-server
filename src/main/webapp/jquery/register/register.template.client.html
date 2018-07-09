@@ -9,79 +9,81 @@
         <!--CSS-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link href="register.style.client.css" rel="stylesheet" />
 
         <title>Registration Page</title>
     </head>
 
     <body>
+        <div class="container">
+            <h1>Create an Account</h1>
 
-        <h1>Create an Account</h1>
+            <div>
+                <label for="firstName">
+                    First Name
+                </label>
+                <input type="text"
+                       placeholder=""
+                       id="firstName"/>
+            </div>
 
-        <div>
-            <label for="firstName">
-                First Name
-            </label>
-            <input type="text"
-                   placeholder=""
-                   id="firstName"/>
-        </div>
+            <div>
+                <label for="lastName">
+                    Last Name
+                </label>
+                <input type="text"
+                       placeholder=""
+                       id="lastName"/>
+            </div>
 
-        <div>
-            <label for="lastName">
-                Last Name
-            </label>
-            <input type="text"
-                   placeholder=""
-                   id="lastName"/>
-        </div>
+            <div>
+                <label for="email">
+                    Email
+                </label>
+                <input type="text"
+                       placeholder=""
+                       id="email"/>
+            </div>
 
-        <div>
-            <label for="email">
-                Email
-            </label>
-            <input type="text"
-                   placeholder=""
-                   id="email"/>
-        </div>
+            <div>
+                <label for="username">
+                    Username
+                </label>
+                <input type="text"
+                       placeholder=""
+                       id="username"/>
+            </div>
 
-        <div>
-            <label for="username">
-                Username
-            </label>
-            <input type="text"
-                   placeholder=""
-                   id="username"/>
-        </div>
+            <div>
+                <label for="password">
+                    Password
+                </label>
+                <input type="password"
+                       placeholder="qwerty"
+                       id="password"/>
+            </div>
 
-        <div>
-            <label for="password">
-                Password
-            </label>
-            <input type="password"
-                   placeholder="qwerty"
-                   id="password"/>
-        </div>
+            <div>
+                <label for="password2">
+                    Validate Password
+                </label>
+                <input type="password"
+                       placeholder="qwerty"
+                       id="password2"/>
+            </div>
 
-        <div>
-            <label for="password2">
-                Validate Password
-            </label>
-            <input type="password"
-                   placeholder="qwerty"
-                   id="password2"/>
-        </div>
+            <div class="registerBtn">
+                <button id="registerBtn">
+                    Register
+                </button>
+            </div>
 
-        <div>
-            <button id="registerBtn">
-                Register
-            </button>
-        </div>
-
-        <div>
-            <p>Already have an account?</p>
-            <a href="../components/login/login.template.client.html">
-                Login
-            </a>
+            <div class="login">
+                <p>Already have an account?</p>
+                <a href="../components/login/login.template.client.html">
+                    Login
+                </a>
+            </div>
         </div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
