@@ -25,6 +25,12 @@ public class User {
 	private Date DOB;
 	
 	// getters & setters
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -66,11 +72,5 @@ public class User {
 	}
 	public void setDOB(Date dOB) {
 		DOB = dOB;
-	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
 	}
 }
