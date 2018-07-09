@@ -1,6 +1,5 @@
 /* Register page CSS */
 
-
 * {
     box-sizing: border-box;
     font-family: "Open Sans", Helvetica, sans-serif;
@@ -27,34 +26,38 @@ body {
 
 label {
     width: 25%;
-    float:left;
-    padding: 10px;
+    float: left;
+    padding: 10px 10px 10px 0;
+    display: inline-block;
 }
 
 
 input {
-     width: 75%;
-     float:left;
-     padding: 10px;
-     display: inline-block;
-     border: none;
-     background: #f1f1f1;
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 2px;
+    resize: vertical;
  }
 
 input:focus {
-    background: #dddddd;
+    background: #e5e5e5;
 }
 
-registerBtn {
-
+.registerBtn {
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    display: inline-block;
+    border: none;
+    background: #62c462;
+    color: #ffffff;
+    font-family: "Open Sans", Helvetica, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: bold;
 }
-
-login {
-    width: 25%;
-    float:left;
-    padding: 20px;
-}
-
 
 
 /* style the top navigation bar */
