@@ -19,7 +19,7 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	// execute whenever you see: http://localhost:8080/register
+	// execute whenever you see: http://localhost:8080/api/register
 	@PostMapping("/api/register")
 	// instantiate user object and getting the user from the Request Body 
 	public User register(@RequestBody User user) {
