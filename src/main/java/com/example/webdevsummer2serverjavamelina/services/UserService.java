@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,6 +38,22 @@ public class UserService {
 	}
 	*/
 	/*
+	@PutMapping("/api/user/{userId")
+	public User updateUser(@PathVariable("userID") int id,
+			@RequestBody User user) {
+		Optional<User> optional = userRepostory.findById(id);
+		if (optional.isPresent()) {
+			User user = optional.get();
+			user.setFirstName(newUser.getFirstName());
+			user.setLastName(newUser.getLastName());
+			return userRepository.save(user);
+		}
+		return null;
+		// or throw exception
+	}
+	*/
+	
+	/*
 	// login
 	@PostMapping("/api/login") 
 	public User login(@RequestBody User user) {
@@ -49,6 +66,7 @@ public class UserService {
 		return (User) session.getAttribute("currentUser");
 	}
 	
+	/*
 	// retrieving data - dynamic, meant for api
 	@GetMapping("/api/user")
 	public List<User> findAllUsers() {
@@ -56,13 +74,14 @@ public class UserService {
 		return (List<User>) userRepository.findAll();
 	}
 	
-	/*
+	
 	@GetMapping("/api/user/{userId}")
-	public User findUserById(@PathVariable(name="userId") Integer userId) {
-		UserRepository userRepo = UserRepository.getInstance();
-		return userRepo.findUserById(userId);
+	public Optional<User> findUserById(@PathVariable("userId"), Integer userId) {
+		int id = Integer.parseInt(userId);
+		return UserRepository.findById(id);
 	}
 	*/
+	
 	/*
 	@PostMapping("/api/user/{userId}")
 	public updateUser(@RequestBody Integer userId) {
