@@ -21,13 +21,22 @@ body {
     font-weight: normal;
 }
 
+.table-striped {
+    border: 2px;
+}
+
 .container {
     padding: 20px;
 }
 
+.edit, .create, .remove, .update, .search {
+    background-color: transparent;
+    border: 0px;
+}
+
 /* style the top navigation bar */
 .topnav {
-    background-color: #fafafa;
+    background-color: #ffffff;
     padding: 10px;
 }
 
@@ -35,45 +44,4 @@ body {
 .content {
     background-color: #ffffff;
     padding: 10px;
-}
-
-/* style the footer */
-.footer {
-    background-color: #fafafa;
-    padding: 10px;
-}
-
-/* style the template */
-.template {
-    background-color: #fafafa;
-    padding: 10px;
-}
-
-
-.createUser {
-    font-family: "Open Sans";
-    font-size: 8px;
-    font-style: normal;
-    font-weight: normal;
-}
-
-.searchUser {
-    font-family: "Open Sans";
-    font-size: 8px;
-    font-style: normal;
-    font-weight: normal;
-}
-
-.editUser {
-    font-family: "Open Sans";
-    font-size: 8px;
-    font-style: normal;
-    font-weight: normal;
-}
-
-.deleteUser {
-    font-family: "Open Sans";
-    font-size: 8px;
-    font-style: normal;
-    font-weight: normal;
 }

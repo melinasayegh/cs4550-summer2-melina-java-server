@@ -46,7 +46,7 @@ input:focus {
     background: #e5e5e5;
 }
 
-.registerBtn {
+button {
     width: 100%;
     padding: 10px 10px 10px 10px;
     display: inline-block;
@@ -59,17 +59,12 @@ input:focus {
     font-weight: bold;
 }
 
+.registerBtn {
+    background: #1E90FF;
+}
+
 .loginBtn {
-    width: 100%;
-    padding: 10px 10px 10px 10px;
-    display: inline-block;
-    border: none;
     background: #62c462;
-    color: #ffffff;
-    font-family: "Open Sans", Helvetica, sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: bold;
 }
 
 

@@ -46,7 +46,7 @@ input:focus {
     background: #e5e5e5;
 }
 
-.updateBtn {
+button {
     width: 100%;
     padding: 10px 10px 10px 10px;
     display: inline-block;
@@ -59,17 +59,13 @@ input:focus {
     font-weight: bold;
 }
 
+
+.updateBtn {
+    background: #62c462;
+}
+
 .logoutBtn {
-    width: 100%;
-    padding: 10px 10px 10px 10px;
-    display: inline-block;
-    border: none;
     background: #dd514c;
-    color: #ffffff;
-    font-family: "Open Sans", Helvetica, sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: bold;
 }
 
 
