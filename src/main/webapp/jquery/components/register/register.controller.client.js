@@ -43,14 +43,14 @@
 
     function registrationSuccessful() {
         alert("You have been registered.")
-        window.location.href("/../components/profile/profile.template.client.html");
+        window.location.href("/../profile/profile.template.client.html");
     }
 
     function registrationFailed() {
 
         // same username as already in database
         if (usernameFld.val() == "fail") {
-            alert("Registration Failed - please confirm passwords are the same.")
+            alert("Registration Failed - user already exists.")
         }
 
         // if passwords don't match
