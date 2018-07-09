@@ -21,16 +21,22 @@
 
         fetch('/api/register', {
             method: 'post',
-            body: userObjStr,
+            body: JSON.stringify(user),
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(registrationSuccessful, registrationFailed);
+        }).then(navigateToProfile);
     }
+
+
+    function navigateToProfile() {
+        window.location.href("/../profile/profile.template.client.html")
+    }
+
 
     function registrationSuccessful() {
         alert("You have been logged in.")
-        window.location.href("/../components/profile/profile.template.client.html");
+        window.location.href("/../profile/profile.template.client.html");
     }
 
     function registrationFailed() {

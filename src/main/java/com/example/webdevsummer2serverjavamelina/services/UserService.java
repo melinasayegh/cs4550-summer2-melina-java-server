@@ -29,6 +29,11 @@ public class UserService {
 		return userRepository.save(user);
 	}
 	
+	// login
+	@PostMapping("/api/login") {
+		
+	}
+	
 	// retrieving data - dynamic, meant for api
 	@GetMapping("/api/user")
 	public List<User> findAllUsers() {
