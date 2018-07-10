@@ -28,7 +28,8 @@ public class UserService {
 	// execute whenever you see: http://localhost:8080/api/register
 
 	
-	@PostMapping("/register")
+	// should this be createUser() ??
+	@PostMapping("/api/register")
 	// instantiate user object and getting the user from the Request Body 
 	public User register(@RequestBody User user, HttpSession session) {
 		// save: returns instances of the same thing that it instantiates -- users
@@ -38,6 +39,22 @@ public class UserService {
 		
 		return cu;
 	}
+	
+	// retrieving data - dynamic, meant for api
+	@GetMapping("/api/user")
+	public List<User> findAllUsers() {
+		// returns iterable, so cast to List of Users
+		return (List<User>) userRepository.findAll();
+	}
+	
+	/*
+	@GetMapping("/api/user/{userId}")
+	public Optional<User> findUserById(@PathVariable("userId"), Integer userId) {
+		int id = Integer.parseInt(userId);
+		return UserRepository.findById(id);
+	}
+	*/
+	
 	
 	/*
 	@PutMapping("/api/user/{userId")
@@ -56,6 +73,15 @@ public class UserService {
 	*/
 	
 	/*
+	
+	@DeleteMapping("/api/user/{userId}")
+	public deleteUser(@RequestBody Integer userId) {
+		return ;
+	}
+	
+	*/
+	
+	/*
 	// login
 	@PostMapping("/api/login") 
 	public User login(@RequestBody User user) {
@@ -67,34 +93,6 @@ public class UserService {
 	public User checkLogin(HttpSession session) {
 		return (User) session.getAttribute("currentUser");
 	}
-	*/
-	/*
-	// retrieving data - dynamic, meant for api
-	@GetMapping("/api/user")
-	public List<User> findAllUsers() {
-		// returns iterable, so cast to List of Users
-		return (List<User>) userRepository.findAll();
-	}
-	
-	
-	@GetMapping("/api/user/{userId}")
-	public Optional<User> findUserById(@PathVariable("userId"), Integer userId) {
-		int id = Integer.parseInt(userId);
-		return UserRepository.findById(id);
-	}
-	*/
-	
-	/*
-	@PostMapping("/api/user/{userId}")
-	public updateUser(@RequestBody Integer userId) {
-		return ;
-	}
-	
-	@DeleteMapping("/api/user/{userId}")
-	public deleteUser(@RequestBody Integer userId) {
-		return ;
-	}
-	
 	*/
 	
 }
