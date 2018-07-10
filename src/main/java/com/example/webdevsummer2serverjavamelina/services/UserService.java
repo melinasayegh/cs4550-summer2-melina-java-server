@@ -22,11 +22,13 @@ import com.example.webdevsummer2serverjavamelina.repositories.UserRepository;
 public class UserService {
 	
 	//@Autowired
-	//UserRepository userRepository;
+	UserRepository userRepository;
 	
-	/*
+	
 	// execute whenever you see: http://localhost:8080/api/register
-	@PostMapping("/api/register")
+
+	
+	@PostMapping("/register")
 	// instantiate user object and getting the user from the Request Body 
 	public User register(@RequestBody User user, HttpSession session) {
 		// save: returns instances of the same thing that it instantiates -- users
@@ -36,7 +38,7 @@ public class UserService {
 		
 		return cu;
 	}
-	*/
+	
 	/*
 	@PutMapping("/api/user/{userId")
 	public User updateUser(@PathVariable("userID") int id,
