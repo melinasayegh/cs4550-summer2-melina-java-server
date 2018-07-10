@@ -21,8 +21,8 @@ import com.example.webdevsummer2serverjavamelina.repositories.UserRepository;
 @RestController
 public class UserService {
 	
-	@Autowired
-	UserRepository userRepository;
+	//@Autowired
+	//UserRepository userRepository;
 	
 	/*
 	// execute whenever you see: http://localhost:8080/api/register
@@ -60,12 +60,12 @@ public class UserService {
 		return userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
 	}
 	*/
-	
+	/*
 	@GetMapping("/api/checkLogin") 
 	public User checkLogin(HttpSession session) {
 		return (User) session.getAttribute("currentUser");
 	}
-	
+	*/
 	/*
 	// retrieving data - dynamic, meant for api
 	@GetMapping("/api/user")
