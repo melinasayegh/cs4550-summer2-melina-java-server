@@ -9,7 +9,7 @@ import com.example.webdevsummer2serverjavamelina.models.User;
 
 public interface UserRepository extends CrudRepository<User,Integer> {
 	
-	@Query("SELECT user FROM User user WHERE user.username-:username AND user.password =:password")
+	@Query("SELECT user FROM User user WHERE user.username=:username AND user.password=:password")
 	public User findUserByCredentials(@Param("username") String u, @Param("password") String p);
 	
 }

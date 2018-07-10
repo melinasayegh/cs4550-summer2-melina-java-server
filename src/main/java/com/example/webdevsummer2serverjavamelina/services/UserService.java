@@ -1,6 +1,7 @@
 package com.example.webdevsummer2serverjavamelina.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,7 +22,7 @@ import com.example.webdevsummer2serverjavamelina.repositories.UserRepository;
 @RestController
 public class UserService {
 	
-	//@Autowired
+	@Autowired
 	UserRepository userRepository;
 	
 	
