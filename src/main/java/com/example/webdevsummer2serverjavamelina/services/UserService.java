@@ -48,14 +48,12 @@ public class UserService {
 		return (List<User>) userRepository.findAll();
 	}
 	
-	/*
-	@GetMapping("/api/user/{userId}")
-	public Optional<User> findUserById(@PathVariable("userId"), Integer userId) {
-		int id = Integer.parseInt(userId);
-		return UserRepository.findById(id);
-	}
-	*/
 	
+	@GetMapping("/api/user/{userId}")
+	public Optional<User> findUserById(@PathVariable("userId") String userId) {
+		int id = Integer.parseInt(userId);
+		return userRepository.findById(id);
+	}
 	
 	/*
 	@PutMapping("/api/user/{userId")
