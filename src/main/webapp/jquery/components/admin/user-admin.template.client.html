@@ -21,50 +21,49 @@
                 <thead>
                     <!-- Titles - 1st row in Table-->
                     <tr>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <!--
-                        <th class="col">Email</th>
-                        <th class="col">Date of Birth</th>
-                        -->
-                        <th>Role</th>
-                        <th>&nbsp</th>
+                        <th class="span1">Username</th>
+                        <th class="span1">Password</th>
+                        <th class="span1">First Name</th>
+                        <th class="span1">Last Name</th>
+                        <th class="span1">Email</th>
+                        <th class="span1">Date of Birth</th>
+                        <th class="span1">Role</th>
+                        <th class="span1">&nbsp</th>
                     </tr>
+
                     <!-- Input Fields - 2nd row in Table-->
                     <tr class="wbdv-form">
-                        <td>
+                        <td class="span1">
                             <input id="usernameFld"
                                    placeholder="Username"
-                                   class="form-control input-small" />
+                                   class="form-control input-small"/>
                         </td>
-                        <td>
+                        <td class="span1">
                             <input id="passwordFld"
                                    placeholder="Password"
                                    class="form-control input-small" />
                         </td>
-                        <td>
+                        <td class="span1">
                             <input id="firstNameFld"
                                    placeholder="First Name"
                                    class="form-control input-small" />
                         </td>
-                        <td>
+                        <td class="span1">
                             <input id="lastNameFld"
                                    placeholder="Last Name"
                                    class="form-control input-small" />
-                        </td>
+                        </td class="span1">
                         <td>
                             <input id="emailFld"
                                    placeholder="Email"
                                    class="form-control input-small" />
-                        </td>
+                        </td class="span1">
                         <td>
                             <input id="dobFld"
                                    type="date"
                                    class="form-control input-small"
                                    value="0000-00-00"/>
-                        <td>
+                        <td class="span1">
                             <select name="role"
                                     id="roleFld"
                                     class="form-control input-small">
@@ -82,7 +81,7 @@
                                 </option>
                             </select>
                         </td>
-                        <td>
+                        <td class="span1">
                             <span class="float-right">
                                 <button class="fa-2x fa fa-search search"></button>
                                 <button class="fa-2x fa fa-plus   create"></button>
@@ -93,10 +92,12 @@
                 </thead>
                 <tbody>
                     <tr class="template">
-                        <th>jane.doe</th>
+                        <th>jane</th>
                         <td>*****</td>
                         <td>Jane</td>
                         <td>Doe</td>
+                        <td>jane@doe.com</td>
+                        <td>01/01/1995</td>
                         <td>Admin</td>
                         <td>
                             <span class="float-right">
@@ -106,11 +107,11 @@
                         </td>
                     </tr>
                     <tr class="template">
-                        <th>jane.doe</th>
+                        <th>john</th>
                         <td>*****</td>
                         <td>John</td>
                         <td>Doe</td>
-                        <td>jane@doe.com</td>
+                        <td>john@doe.com</td>
                         <td>01/01/1990</td>
                         <td>Admin</td>
                         <td>

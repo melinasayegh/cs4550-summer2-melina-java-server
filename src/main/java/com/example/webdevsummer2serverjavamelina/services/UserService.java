@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -41,22 +42,26 @@ public class UserService {
 		return cu;
 	}
 	
-	// retrieving data - dynamic, meant for api
-	@GetMapping("/api/user")
-	public List<User> findAllUsers() {
-		System.out.print(userRepository.findAll());
-		// returns iterable, so cast to List of Users
-		return (List<User>) userRepository.findAll();
-	}
-	
-	
 	@GetMapping("/api/user/{userId}")
 	public Optional<User> findUserById(@PathVariable("userId") String userId) {
 		int id = Integer.parseInt(userId);
 		return userRepository.findById(id);
 	}
 	
-	
+	@GetMapping("/api/user")	
+	public Iterable<User> findAllUsers(
+			@RequestParam(name="username", required=false) String username, 
+			@RequestParam(name="password", required=false) String password) {
+		if(username != null && password != null) {
+			return (Iterable<User>) userRepository.findUserByCredentials(username, password);
+		} else if(username != null) {
+			return userRepository.findUserByUsername(username);
+		} else {
+			return userRepository.findAll();
+		}
+	}
+
+
 	@PutMapping("/api/user/{userId")
 	public User updateUser(
 			@PathVariable("userID") int id,
