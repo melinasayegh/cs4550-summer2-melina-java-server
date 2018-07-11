@@ -2,12 +2,14 @@
 
 (function () {
 
-    var registerBtn = jQuery('#registerBtn');
+    var registerBtn = $('#registerBtn');
+    var loginBtn = $('#loginBtn');
     var usernameFld = $('#username');
     var passwordFld = $('#password');
     var password2Fld = $('#password2');
 
     registerBtn.click(registerHandler);
+    //loginBtn.click(login);
 
     function registerHandler() {
         var usernameStr = usernameFld.val();
@@ -33,7 +35,7 @@
     }
 
     function registrationSuccessful() {
-        window.location.href = '/components/profile/profile.template.client.html';
+        window.location.href = '/jquery/components/profile/profile.template.client.html';
     }
 
     function registrationFailed() {
@@ -52,4 +54,9 @@
             registrationSuccessful()
         }
     }
+
+    //function login() {
+    //    window.location.href = '/jquery/components/login/login.template.client.html';
+    //}
+
 })()

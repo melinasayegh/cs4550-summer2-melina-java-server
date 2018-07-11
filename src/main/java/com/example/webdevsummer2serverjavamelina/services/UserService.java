@@ -1,5 +1,8 @@
 package com.example.webdevsummer2serverjavamelina.services;
 
+import com.example.webdevsummer2serverjavamelina.models.User;
+import com.example.webdevsummer2serverjavamelina.repositories.UserRepository;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -13,9 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.webdevsummer2serverjavamelina.models.User;
-import com.example.webdevsummer2serverjavamelina.repositories.UserRepository;
 
 
 //declare this class as restfull controller
@@ -78,9 +78,9 @@ public class UserService {
 	}
 	
 	// login
-	@PostMapping("/api/login") 
+	@PostMapping("/api/login")
 	public User login(@RequestBody User user, HttpSession session) {
-		user =  userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+		user = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
 		session.setAttribute("currentUser", user);
 		return user;
 	}

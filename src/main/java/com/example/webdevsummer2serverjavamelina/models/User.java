@@ -80,4 +80,16 @@ public class User {
 	public void setDOB(Date dOB) {
 		DOB = dOB;
 	}
+	
+	
+	public User(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
+	
+	public User() {
+		super();
+	}
+
 }
