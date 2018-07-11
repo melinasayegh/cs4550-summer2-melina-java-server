@@ -70,17 +70,12 @@ public class UserService {
 		return null;
 		// or throw exception
 	}
-	
-	
-	/*
+
 	
 	@DeleteMapping("/api/user/{userId}")
-	public deleteUser(@RequestBody Integer userId) {
-		return ;
+	public void deleteUser(@PathVariable("userId") int userId) {
+		userRepository.deleteById(userId);
 	}
-	
-	*/
-	
 	
 	// login
 	@PostMapping("/api/login") 
