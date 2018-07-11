@@ -1,47 +1,10 @@
 /* User-Admin CSS */
 
-
-* {
-    box-sizing: border-box;
-    font-family: "Open Sans", Helvetica, sans-serif;
-}
-
-h1 {
-    font-family: "Open Sans", Helvetica, sans-serif;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: bold;
-}
-
-body {
-    margin: 0;
-    font-family: "Open Sans";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: normal;
-}
-
 .table-striped {
     border: 2px;
-}
-
-.container {
-    padding: 20px;
 }
 
 .edit, .create, .remove, .update, .search {
     background-color: transparent;
     border: 0px;
-}
-
-/* style the top navigation bar */
-.topnav {
-    background-color: #ffffff;
-    padding: 10px;
-}
-
-/* style the content */
-.content {
-    background-color: #ffffff;
-    padding: 10px;
 }

@@ -1,64 +1,5 @@
 /* Register page CSS */
 
-* {
-    box-sizing: border-box;
-    font-family: "Open Sans", Helvetica, sans-serif;
-}
-
-.container {
-    padding: 20px;
-}
-
-h1 {
-    font-family: "Open Sans", Helvetica, sans-serif;
-    font-size: 40px;
-    font-style: normal;
-    font-weight: bold;
-}
-
-body {
-    margin: 0;
-    font-family: "Open Sans";
-    font-size: 16px;
-    font-style: normal;
-    font-weight: normal;
-}
-
-label {
-    width: 25%;
-    float: left;
-    padding: 10px 10px 10px 0;
-    display: inline-block;
-}
-
-
-input {
-    width: 100%;
-    padding: 10px 10px 10px 10px;
-    display: inline-block;
-    border: none;
-    background: #f1f1f1;
-    border-radius: 2px;
-    resize: vertical;
- }
-
-input:focus {
-    background: #e5e5e5;
-}
-
-button {
-    width: 100%;
-    padding: 10px 10px 10px 10px;
-    display: inline-block;
-    border: none;
-    background: #1E90FF;
-    color: #ffffff;
-    font-family: "Open Sans", Helvetica, sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: bold;
-}
-
 .registerBtn {
     background: #1E90FF;
 }
@@ -67,21 +8,6 @@ button {
     background: #62c462;
 }
 
-
-/* style the top navigation bar */
-.topnav {
-    background-color: #fafafa;
-    padding: 10px;
-}
-
-/* style the content */
-.content {
-    background-color: #ffffff;
-    padding: 10px;
-}
-
-/* style the footer */
-.footer {
-    background-color: #fafafa;
-    padding: 10px;
+.already-registered {
+    padding-top: 40px;
 }
