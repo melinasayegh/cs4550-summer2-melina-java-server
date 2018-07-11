@@ -84,8 +84,10 @@ public class UserService {
 	
 	// login
 	@PostMapping("/api/login") 
-	public User login(@RequestBody User user) {
-		return userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+	public User login(@RequestBody User user, HttpSession session) {
+		user =  userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+		session.setAttribute("currentUser", user);
+		return user;
 	}
 	
 	
@@ -93,6 +95,5 @@ public class UserService {
 	public User checkLogin(HttpSession session) {
 		return (User) session.getAttribute("currentUser");
 	}
-	
 	
 }
