@@ -86,9 +86,10 @@ public class UserService {
 	}
 	
 	
-	@GetMapping("/api/checkLogin") 
-	public User checkLogin(HttpSession session) {
-		return (User) session.getAttribute("currentUser");
+	@GetMapping("/api/profile") 
+	public Optional<User> profile(HttpSession session) {
+		User currentUser = (User) session.getAttribute("currentUser");
+		return userRepository.findById(currentUser.getId());
 	}
 	
 }
