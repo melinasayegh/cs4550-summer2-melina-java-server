@@ -15,17 +15,70 @@
     var userService = new AdminUserServiceClient();
 
 
+
+    function init() {
+        userServiceClient.findAllUsers()
+            .then(renderUsers);
+    }
+    init();
+
+
     //
     function main() {
         tbody = $('tbody');
         template = $('.template');
         $('#createUser').click(createUser);
+        $('#deleteUser').click(deleteUser());
+        $('#updateUser').click(updateUser());
 
-        // need delete user
-        // need update user
-        // need select user
+        // need select user too
 
         findAllUsers();
+    }
+
+    function renderUsers(users) {
+        console.log(users);
+
+        var tbody = $('tbody');
+        tbody.empty();
+        for (var i=0; i<users.length; i++) {
+            var user = users[i];
+
+            var tr = $('<tr>');
+            var td = $('<td>');
+
+            td.append(user.username);
+            tr.append(td);
+
+            td = $('<td>');
+            td.append(user.password);
+            tr.append(td);
+
+            td = $('<td>');
+            td.append(user.firstName);
+            tr.append(td);
+
+            td = $('<td>');
+            td.append(user.lastName);
+            tr.append(td);
+
+            td = $('<td>');
+            td.append(user.email);
+            tr.append(td);
+
+            td = $('<td>');
+            td.append(user.role);
+            tr.append(td);
+
+            td = $('<td>');
+            var deleteBtn = $('<button>DELETE</button>');
+            deleteBtn.click(deleteUser);
+            deleteBtn.attr('id', user.id);
+            td.append(deleteBtn);
+            tr.append(td);
+
+            tr.appendTo(tbody);
+        }
     }
 
     // create user: creates user object
@@ -39,13 +92,15 @@
         var firstName = $('#firstNameFld').val();
         var lastName = $('#lastNameFld').val();
         var email = $('#emailFld').val();
+        var role = $('#roleFld').val();
 
         var user = {
             username: username,
             password: password,
             firstName: firstName,
             lastName: lastName,
-            email: email
+            email: email,
+            role: role
         };
 
         userService

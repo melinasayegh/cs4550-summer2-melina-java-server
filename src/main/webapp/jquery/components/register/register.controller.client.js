@@ -2,48 +2,38 @@
 
 (function () {
 
-    var registerBtn  = $('#registerBtn')
-    var usernameFld  = $('#username');
-    var passwordFld  = $('#password');
+    var registerBtn = jQuery('#registerBtn');
+    var usernameFld = $('#username');
+    var passwordFld = $('#password');
     var password2Fld = $('#password2');
-    var emailFld     = $('#email');
-    var firstNameFld = $('#firstName');
-    var lastNameFld  = $('#lastName');
-
-
 
     registerBtn.click(registerHandler);
 
     function registerHandler() {
-        var usernameStr  = usernameFld.val();
-        var passwordStr  = passwordFld.val();
+        var usernameStr = usernameFld.val();
+        var passwordStr = passwordFld.val();
         var password2Str = password2Fld.val();
-        var firstNameStr = firstNameFld.val();
-        var lastNameStr  = lastNameFld.val();
-        var emailStr     = emailFld.val();
 
         var userObj = {
-            username:  usernameStr,
-            password:  passwordStr,
-            firstName: firstNameStr,
-            lastName:  lastNameStr,
-            email:     emailStr
-        }
+            username: usernameStr,
+            password: passwordStr
+        };
 
         var userObjStr = JSON.stringify(userObj);
 
-        fetch('/api/register', {
+        fetch('/register', {
             method: 'post',
             body: userObjStr,
             headers: {
                 'Content-Type': 'application/json'
-            }
-        }).then(registrationSuccessful, registrationFailed);
+            },
+            'credentials': 'include'
+        }).then(registrationSuccessful, registrationFailed)
+
     }
 
     function registrationSuccessful() {
-        alert("You have been registered.")
-        window.location.href("/../profile/profile.template.client.html");
+        window.location.href = '/components/profile/profile.template.client.html';
     }
 
     function registrationFailed() {
@@ -54,16 +44,12 @@
         }
 
         // if passwords don't match
-        if (passwordFld.val() !== password2Fld.val()) {
-            alert("Registration Failed - Please confirm passwords are the same.")
+        else if (passwordFld.val() !== password2Fld.val()) {
+            alert("Registration Failed - Passwords do not match.")
         }
-    }
 
-    function confirmPasswords() {
-        // if passwords don't match
-        if (passwordFld.val() !== password2Fld.val()) {
-            // error message
-            alert('Passwords do not match')
+        else {
+            registrationSuccessful()
         }
     }
 })()

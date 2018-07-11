@@ -1,29 +1,30 @@
 // IIFE: Immediately Invoked Function Expression
 
 (function () {
+    var $username,
+        $password,
+        $loginBtn;
 
-    var loginBtn     = $('#loginBtn')
-    var usernameFld  = $('#username');
-    var passwordFld  = $('#password');
+    function init() {
+        $username = $('#username');
+        $password = $('#password');
+        $loginBtn = $('#loginBtn');
 
-    loginBtn.click(registerHandler);
+        $loginBtn.click(login);
+    }
+    init();
 
-    function registerHandler() {
-        var usernameStr  = usernameFld.val();
-        var passwordStr  = passwordFld.val();
-
-        var userObj = {
-            username:  usernameStr,
-            password:  passwordStr,
-        }
-
-        var userObjStr = JSON.stringify(userObj);
-
+    function login() {
+        var user = {
+            'username': $username.val(),
+            "password": $password.val()
+        };
         fetch('/api/login', {
             method: 'post',
             body: JSON.stringify(user),
+            credentials: 'include',
             headers: {
-                'Content-Type': 'application/json'
+                'content-type': 'application/json'
             }
         }).then(navigateToProfile);
     }
@@ -47,4 +48,4 @@
         }
         */
     }
-})()
+})();
