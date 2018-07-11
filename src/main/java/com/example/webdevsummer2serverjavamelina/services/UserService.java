@@ -28,17 +28,21 @@ public class UserService {
 	
 	
 	// execute whenever you see: http://localhost:8080/api/register
-
 	
-	// should this be createUser() ??
+	@PostMapping("/api/register")
+	// instantiate user object and getting the user from the Request Body 
+	public User createUser(@RequestBody User user, HttpSession session) {
+		// save: returns instances of the same thing that it instantiates -- users
+		User cu = userRepository.save(user);
+		return cu;
+	}
+
 	@PostMapping("/api/register")
 	// instantiate user object and getting the user from the Request Body 
 	public User register(@RequestBody User user, HttpSession session) {
 		// save: returns instances of the same thing that it instantiates -- users
-		User cu = userRepository.save(user);
-		
+		User cu = createUser(user, session);
 		session.setAttribute("currentUser", cu);
-		
 		return cu;
 	}
 	
@@ -61,7 +65,6 @@ public class UserService {
 		}
 	}
 
-
 	@PutMapping("/api/user/{userId")
 	public User updateUser(
 			@PathVariable("userID") int id,
@@ -71,17 +74,24 @@ public class UserService {
 			User user = optional.get();
 			user.setFirstName(newUser.getFirstName());
 			user.setLastName(newUser.getLastName());
+			user.setEmail(newUser.getEmail());
+			user.setPhone(newUser.getPhone());
+			user.setRole(newUser.getRole());
+			user.setDOB(newUser.getDOB());
+			
 			return userRepository.save(user);
 		}
 		return null;
 		// or throw exception
 	}
 
-	
+
+
 	@DeleteMapping("/api/user/{userId}")
 	public void deleteUser(@PathVariable("userId") int userId) {
 		userRepository.deleteById(userId);
 	}
+	
 	
 	// login
 	@PostMapping("/api/login")
@@ -100,10 +110,20 @@ public class UserService {
 		return userRepository.findById(currentUser.getId());
 	}
 	
+	@PutMapping("/api/profile")
+	public User updateProfile(@RequestBody User user, HttpSession session) { 
+		if (user != null) {
+		    session.setAttribute("user", user);
+		    return updateUser(user.getId(), user);
+		} 
+		else { 
+			return null;
+		
+		}
+	}
+
 	@PostMapping("/api/logout")
 	public void logout(HttpSession session) {
 		session.invalidate();
 	}
-
-	
 }
