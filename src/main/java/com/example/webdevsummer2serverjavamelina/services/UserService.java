@@ -1,6 +1,7 @@
 package com.example.webdevsummer2serverjavamelina.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -21,11 +22,14 @@ import com.example.webdevsummer2serverjavamelina.repositories.UserRepository;
 @RestController
 public class UserService {
 	
-	//@Autowired
-	//UserRepository userRepository;
+	@Autowired
+	UserRepository userRepository;
 	
-	/*
+	
 	// execute whenever you see: http://localhost:8080/api/register
+
+	
+	// should this be createUser() ??
 	@PostMapping("/api/register")
 	// instantiate user object and getting the user from the Request Body 
 	public User register(@RequestBody User user, HttpSession session) {
@@ -36,37 +40,7 @@ public class UserService {
 		
 		return cu;
 	}
-	*/
-	/*
-	@PutMapping("/api/user/{userId")
-	public User updateUser(@PathVariable("userID") int id,
-			@RequestBody User user) {
-		Optional<User> optional = userRepostory.findById(id);
-		if (optional.isPresent()) {
-			User user = optional.get();
-			user.setFirstName(newUser.getFirstName());
-			user.setLastName(newUser.getLastName());
-			return userRepository.save(user);
-		}
-		return null;
-		// or throw exception
-	}
-	*/
 	
-	/*
-	// login
-	@PostMapping("/api/login") 
-	public User login(@RequestBody User user) {
-		return userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
-	}
-	*/
-	/*
-	@GetMapping("/api/checkLogin") 
-	public User checkLogin(HttpSession session) {
-		return (User) session.getAttribute("currentUser");
-	}
-	*/
-	/*
 	// retrieving data - dynamic, meant for api
 	@GetMapping("/api/user")
 	public List<User> findAllUsers() {
@@ -76,23 +50,46 @@ public class UserService {
 	
 	
 	@GetMapping("/api/user/{userId}")
-	public Optional<User> findUserById(@PathVariable("userId"), Integer userId) {
+	public Optional<User> findUserById(@PathVariable("userId") String userId) {
 		int id = Integer.parseInt(userId);
-		return UserRepository.findById(id);
+		return userRepository.findById(id);
 	}
-	*/
 	
-	/*
-	@PostMapping("/api/user/{userId}")
-	public updateUser(@RequestBody Integer userId) {
-		return ;
+	
+	@PutMapping("/api/user/{userId")
+	public User updateUser(
+			@PathVariable("userID") int id,
+			@RequestBody User newUser) {
+		Optional<User> optional = userRepository.findById(id);
+		if (optional.isPresent()) {
+			User user = optional.get();
+			user.setFirstName(newUser.getFirstName());
+			user.setLastName(newUser.getLastName());
+			return userRepository.save(user);
+		}
+		return null;
+		// or throw exception
 	}
+
 	
 	@DeleteMapping("/api/user/{userId}")
-	public deleteUser(@RequestBody Integer userId) {
-		return ;
+	public void deleteUser(@PathVariable("userId") int userId) {
+		userRepository.deleteById(userId);
 	}
 	
-	*/
+	// login
+	@PostMapping("/api/login") 
+	public User login(@RequestBody User user, HttpSession session) {
+		user =  userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+		session.setAttribute("currentUser", user);
+		return user;
+	}
+	
+	
+	@GetMapping("/api/profile") 
+	public Optional<User> profile(HttpSession session) {
+		User currentUser = (User) session.getAttribute("currentUser");
+		return userRepository.findById(currentUser.getId());
+	}
 	
 }

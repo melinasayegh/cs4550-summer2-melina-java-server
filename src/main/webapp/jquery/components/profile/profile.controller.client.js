@@ -12,7 +12,7 @@
         $updateBtn = $("#updateBtn");
 
         findUserById(7)
-            .then(function(user))
+            .then(renderUser)
     }
 
     init();
@@ -25,7 +25,7 @@
 
         fetch("/apu/user/" + currentUser.id, {
             method: 'put',
-            body: JSON.tringify(user),
+            body: JSON.stringify(user),
             'credentials' : 'include',
             headers: {
                 'content-type': 'application/json'

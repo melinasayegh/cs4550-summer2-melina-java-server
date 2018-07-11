@@ -19,7 +19,7 @@
 
         var userObjStr = JSON.stringify(userObj);
 
-        fetch('/api/register', {
+        fetch('/api/login', {
             method: 'post',
             body: JSON.stringify(user),
             headers: {
@@ -28,18 +28,12 @@
         }).then(navigateToProfile);
     }
 
-
+    // if login successful
     function navigateToProfile() {
         window.location.href("/../profile/profile.template.client.html")
     }
 
-
-    function registrationSuccessful() {
-        alert("You have been logged in.")
-        window.location.href("/../profile/profile.template.client.html");
-    }
-
-    function registrationFailed() {
+    function loginFailed() {
 
         /*
         // if username is not in database
