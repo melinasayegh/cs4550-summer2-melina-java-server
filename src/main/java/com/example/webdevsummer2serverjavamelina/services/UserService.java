@@ -55,11 +55,12 @@ public class UserService {
 		return userRepository.findById(id);
 	}
 	
-	/*
+	
 	@PutMapping("/api/user/{userId")
-	public User updateUser(@PathVariable("userID") int id,
-			@RequestBody User user) {
-		Optional<User> optional = userRepostory.findById(id);
+	public User updateUser(
+			@PathVariable("userID") int id,
+			@RequestBody User newUser) {
+		Optional<User> optional = userRepository.findById(id);
 		if (optional.isPresent()) {
 			User user = optional.get();
 			user.setFirstName(newUser.getFirstName());
@@ -69,7 +70,7 @@ public class UserService {
 		return null;
 		// or throw exception
 	}
-	*/
+	
 	
 	/*
 	
