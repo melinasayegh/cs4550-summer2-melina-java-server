@@ -76,14 +76,25 @@
             tr.append(td);
 
             td = $('<td>');
+            td.append(user.dateOfBirth);
+            tr.append(td);
+
+            td = $('<td>');
             td.append(user.role);
             tr.append(td);
 
             td = $('<td>');
-            var deleteBtn = $('<button>DELETE</button>');
+            var editBtn = $('<button class="fa-2x fa fa-pencil edit"></button>');
+            var deleteBtn = $('<button class="fa-2x fa fa-times  remove"></button>');
+
             deleteBtn.click(deleteUser);
             deleteBtn.attr('id', user.id);
+
+            editBtn.click(editUser);
+            editBtn.attr('id', user.id);
+
             td.append(deleteBtn);
+            td.append(editBtn);
             tr.append(td);
 
             tr.appendTo(tbody);
