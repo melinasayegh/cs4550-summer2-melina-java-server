@@ -18,7 +18,11 @@ function UserServiceClient() {
     // sends GET request to a user Web service
     // receives JSON array of all users
     function findAllUsers(callback) {
-
+        var url = "/api/user";
+        return fetch(url)
+            .then(function (response) {
+                return response.json();
+            });
     }
 
     // sends GET request with userId as path parameter
@@ -36,6 +40,10 @@ function UserServiceClient() {
     // sends a DELETE request to user Web service with user as path parameter for user to remove
     // receives status
     function deleteUser(userId, callback) {
+        var url = "/api/user/" + id;
 
+        return fetch(url, {
+            method: 'delete'
+        })
     }
 }

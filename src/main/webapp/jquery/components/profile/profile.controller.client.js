@@ -11,7 +11,7 @@
         $lastName = $("#lastName");
         $updateBtn = $("#updateBtn");
 
-        findUserById(7)
+        profile()
             .then(renderUser)
     }
 
@@ -55,7 +55,12 @@
 
     }
 
-    fetch('checkLogin')
-
-
+    function profile() {
+        return fetch('/profile', {
+            'credentials': 'include'
+        })
+            .then(function (response) {
+                return response.json();
+            });
+    }
 })
