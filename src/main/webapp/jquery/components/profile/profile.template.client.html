@@ -21,53 +21,72 @@
 
             <form class="form-horizontal">
                 <div class ="form-group row">
-                    <label class="control-label col-sm-2" for="userName">
+                    <label class="control-label col-sm-2" for="userNameFld">
                         Username
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="" id="userName"/>
+                        <input type="text" class="form-control" placeholder="" id="userNameFld"/>
                     </div>
                 </div>
 
                 <div class ="form-group row">
-                    <label class="control-label col-sm-2" for="phone">
+                    <label class="control-label col-sm-2" for="phoneFld">
                         Phone
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="" id="phone"/>
+                        <input type="text" class="form-control" placeholder="" id="phoneFld"/>
                     </div>
                 </div>
 
                 <div class ="form-group row">
-                    <label class="control-label col-sm-2" for="email">
+                    <label class="control-label col-sm-2" for="emailFld">
                         Email
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="" id="email"/>
+                        <input type="text" class="form-control" placeholder="" id="emailFld"/>
                     </div>
                 </div>
 
                 <div class ="form-group row">
-                    <label class="control-label col-sm-2"for="role">
+
+                    <label class="control-label col-sm-2"for="roleFld">
                         Role
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" placeholder="" id="role"/>
+                        <select name="role"
+                                id="roleFld"
+                                class="form-control input-small">
+                            <option value="">
+                                Select --
+                            </option>
+                            <option value="FACULTY">
+                                Faculty
+                            </option>
+                            <option value="STUDENT">
+                                Student
+                            </option>
+                            <option value="ADMIN">
+                                Admin
+                            </option>
+                        </select>
                     </div>
                 </div>
 
                 <div class ="form-group row">
-                    <label class="control-label col-sm-2" for="dob">
+                    <label class="control-label col-sm-2" for="dobFld">
                         Date of Birth
                     </label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" placeholder="qwerty" id="dob"/>
+                        <input id="dobFld"
+                               class="form-control"
+                               type="date"
+                               value="0000-00-00"/>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <div class="col-sm-10 offset-sm-2">
-                        <button class="updateBtn" id="updateBtn">
+                        <button class="custom-button updateBtn" id="updateBtn">
                             Update
                         </button>
                     </div>
@@ -75,7 +94,7 @@
 
                 <div class="form-group row">
                     <div class="col-sm-10 offset-sm-2">
-                        <button class="logoutBtn" id="logoutBtn">
+                        <button class="custom-button logoutBtn" id="logoutBtn">
                             Logout
                         </button>
                     </div>

@@ -2,11 +2,10 @@
 
 * {
     box-sizing: border-box;
-    font-family: "Open Sans", Helvetica, sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
 h1 {
-    font-family: "Open Sans", Helvetica, sans-serif;
     font-size: 40px;
     font-style: normal;
     font-weight: bold;
@@ -14,13 +13,33 @@ h1 {
 
 body {
     margin: 0;
-    font-family: "Open Sans";
     font-size: 16px;
     font-style: normal;
     font-weight: normal;
 }
 
-button {
+.control-label {
+    width: 25%;
+    float: left;
+    padding: 10px 10px 10px 0;
+    display: inline-block;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 10px 10px 10px;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 2px;
+    resize: vertical;
+}
+
+.form-control:focus {
+    background: #e5e5e5;
+}
+
+.custom-button {
     width: 100%;
     padding: 10px 10px 10px 10px;
     display: inline-block;
