@@ -9,6 +9,7 @@ h1 {
     font-size: 40px;
     font-style: normal;
     font-weight: bold;
+    padding: 30px 10px 10px 30px;
 }
 
 body {
@@ -20,8 +21,8 @@ body {
 
 .control-label {
     width: 25%;
-    float: left;
-    padding: 10px 10px 10px 0;
+    float: right;
+    padding: 10px 10px 10px 50px;
     display: inline-block;
 }
 
@@ -53,7 +54,7 @@ body {
 }
 
 .container {
-    padding: 20px;
+    padding: 10px;
 }
 
 /* style the top navigation bar */
