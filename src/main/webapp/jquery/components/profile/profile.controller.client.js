@@ -23,7 +23,7 @@
             lastName: $lastName.val()
         }
 
-        fetch("/apu/user/" + currentUser.id, {
+        fetch("/apu/user" + currentUser.id, {
             method: 'put',
             body: JSON.stringify(user),
             'credentials' : 'include',
@@ -45,7 +45,7 @@
 
 
     function findUserById(userId) {
-        return fetch('api/user/' + userId)
+        return fetch('/api/user' + userId)
             .then(function (response) {
                 return repsonse.json();
             })
@@ -56,7 +56,7 @@
     }
 
     function profile() {
-        return fetch('/profile', {
+        return fetch('/api/profile', {
             'credentials': 'include'
         })
             .then(function (response) {

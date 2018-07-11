@@ -44,6 +44,7 @@ public class UserService {
 	// retrieving data - dynamic, meant for api
 	@GetMapping("/api/user")
 	public List<User> findAllUsers() {
+		System.out.print(userRepository.findAll());
 		// returns iterable, so cast to List of Users
 		return (List<User>) userRepository.findAll();
 	}

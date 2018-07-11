@@ -2,14 +2,14 @@
 
 (function () {
 
-    var registerBtn = $('#registerBtn');
-    var loginBtn = $('#loginBtn');
-    var usernameFld = $('#username');
-    var passwordFld = $('#password');
+    var registerBtn  = $('#registerBtn');
+    var loginBtn     = $('#loginBtn');
+    var usernameFld  = $('#username');
+    var passwordFld  = $('#password');
     var password2Fld = $('#password2');
 
-    registerBtn.click(registerHandler);
-    //loginBtn.click(login);
+    registerBtn.click(registerHandler());
+    //loginBtn.click(navigateToLogin());
 
     function registerHandler() {
         var usernameStr = usernameFld.val();
@@ -30,11 +30,11 @@
                 'Content-Type': 'application/json'
             },
             'credentials': 'include'
-        }).then(registrationSuccessful, registrationFailed)
+        }).then(registrationSuccessful(userObjStr), registrationFailed)
 
     }
 
-    function registrationSuccessful() {
+    function registrationSuccessful(userObjStr) {
         window.location.href = '/jquery/components/profile/profile.template.client.html';
     }
 
@@ -42,12 +42,12 @@
 
         // same username as already in database
         if (usernameFld.val() == "fail") {
-            alert("Registration Failed - user already exists.")
+            alert("Registration Failed - user already exists.");
         }
 
         // if passwords don't match
         else if (passwordFld.val() !== password2Fld.val()) {
-            alert("Registration Failed - Passwords do not match.")
+            alert("Registration Failed - Passwords do not match.");
         }
 
         else {
@@ -55,8 +55,8 @@
         }
     }
 
-    //function login() {
-    //    window.location.href = '/jquery/components/login/login.template.client.html';
-    //}
+    function navigateToLogin() {
+        window.location.href = '/jquery/components/login/login.template.client.html';
+    }
 
 })()

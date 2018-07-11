@@ -3,17 +3,17 @@
 (function () {
     var $username,
         $password,
-        $loginBtn;
-        //$registerBtn;
+        $loginBtn,
+        $registerBtn;
 
     function init() {
-        $username = $('#username');
-        $password = $('#password');
-        $loginBtn = $('#loginBtn');
-        //$registerBtn = $('#registerBtn');
+        $username    = $('#username');
+        $password    = $('#password');
+        $loginBtn    = $('#loginBtn');
+        $registerBtn = $('#registerBtn');
 
-        $loginBtn.click(login);
-        //$registerBtn.click(register);
+        $loginBtn.click(login());
+        $registerBtn.click(navigateToRegister());
     }
     init();
 
@@ -22,21 +22,27 @@
             "username": $username.val(),
             "password": $password.val()
         };
+
+        var userObjStr = JSON.stringify(user);
+
+
         fetch('/api/login', {
             method: 'post',
-            body: JSON.stringify(user),
+            body: userObjStr,
             credentials: 'include',
             headers: {
                 'content-type': 'application/json'
             }
-        }).then(navigateToProfile);
+        }).then(loginSuccessful(userObjStr), loginFailed());
     }
 
+
     // if login successful
-    function navigateToProfile() {
+    function navigateToProfile(userObjStr) {
         window.location.href = '/jquery/components/profile/profile.template.client.html';
     }
-/*
+
+    /*
     function loginFailed() {
 
         // if username is not in database
@@ -51,10 +57,10 @@
             navigateToProfile()
         }
     }
+    */
 
-
-    function register() {
+    function navigateToRegister() {
         window.location.href = '/components/register/register.template.client.html';
     }
-    */
+
 })();

@@ -12,12 +12,12 @@
     // this is the user-input row
     var template;
 
-    var userService = new AdminUserServiceClient();
+    var userService = new UserServiceClient();
 
 
 
     function init() {
-        userServiceClient.findAllUsers()
+        userService.findAllUsers()
             .then(renderUsers);
     }
     init();
@@ -34,6 +34,15 @@
         // need select user too
 
         findAllUsers();
+    }
+
+    // retrieve all users and passes response to renderUsers
+    function findAllUsers() {
+        var url = "/api/user";
+        fetch(url)
+            .then(function(response) {
+                return response.json();
+            });
     }
 
     function renderUsers(users) {
@@ -108,15 +117,6 @@
             .then(findAllUsers);
     }
 
-
-
-    // retrieve all users and passes response to renderUsers
-    function findAllUsers() {
-        userService
-            .findAllUsers()
-            .then(renderUsers);
-    }
-
     // find user by id
     function findUserById() {
         //
@@ -127,17 +127,18 @@
         //
     }
 
-    // sends delete request to server
     function deleteUser(event) {
-        var deleteBtn = $(event.currentTarget);
-        var userId = deleteBtn
-            .parent()
-            .parent()
-            .attr('id');
+        console.log(event);
+        var $button = $(event.currentTarget);
+        var id = $button.attr('id');
 
         userService
-            .deleteUser(userId)
-            .then(findAllUsers);
+            .deleteUser(id)
+            .then(function () {
+                userService
+                    .findAllUsers()
+                    .then(renderUsers);
+            });
     }
 
     // User -> void
@@ -154,28 +155,6 @@
             .html(user.username);
         tbody.append(clone);
     }
-
-    // [User] -> void
-    // clears current content of table body
-    // iterated over array of users
-    // clones a table row template for each instance
-    function renderUsers(users) {
-        tbody.empty();
-        for(var i=0; i<users.length; i++) {
-            var user = users[i];
-            var clone = template.clone();
-
-            clone.attr('id', user.id);
-
-            clone.find('.delete').click(deleteUser);
-            clone.find('.edit').click(editUser);
-
-            clone.find('.username')
-                .html(user.username);
-            tbody.append(clone);
-        }
-    }
-
 
     function editUser(event) {
         console.log('editUser');
