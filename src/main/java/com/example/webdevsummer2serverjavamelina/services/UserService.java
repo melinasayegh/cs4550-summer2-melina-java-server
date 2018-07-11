@@ -80,9 +80,11 @@ public class UserService {
 	// login
 	@PostMapping("/api/login")
 	public User login(@RequestBody User user, HttpSession session) {
-		user = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
-		session.setAttribute("currentUser", user);
-		return user;
+		User newUser = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+		System.out.println("USer " + newUser.getFirstName());
+		session.setAttribute("currentUser", newUser);
+		
+		return newUser;
 	}
 	
 	
