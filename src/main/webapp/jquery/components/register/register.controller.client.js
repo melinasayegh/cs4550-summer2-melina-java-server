@@ -7,6 +7,9 @@
     var usernameFld  = $('#username');
     var passwordFld  = $('#password');
     var password2Fld = $('#password2');
+    var firstNameFld = $('#firstName');
+    var lastNameFld  = $('#lastName');
+    var emailFld     = $('#email');
 
     registerBtn.click(registerHandler);
     loginBtn.click(navigateToLogin);
@@ -15,31 +18,40 @@
         var usernameStr = usernameFld.val();
         var passwordStr = passwordFld.val();
         var password2Str = password2Fld.val();
+        var firstNameStr = firstNameFld.val();
+        var lastNameStr = lastNameFld.val();
+        var emailStr = emailFld.val();
 
         var userObj = {
-            username: usernameStr,
-            password: passwordStr
+            username:  usernameStr,
+            password:  passwordStr,
+            firstName: firstNameStr,
+            lastName:  lastNameStr,
+            email:     emailStr
         };
 
         var userObjStr = JSON.stringify(userObj);
 
-        fetch('/register', {
+        fetch('/api/register', {
             method: 'post',
             body: userObjStr,
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json'
-            },
-            'credentials': 'include'
-        }).then(registrationSuccessful(userObjStr), registrationFailed(userObjStr))
+            }
+
+        }).then(registrationSuccessful, registrationFailed)
 
     }
 
-    function registrationSuccessful(userObjStr) {
+    function registrationSuccessful() {
         console.log("registration successful");
-        window.location.href = '/jquery/components/profile/profile.template.client.html';
+        alert("Registration Successful!");
+        console.log("go to profile page");
+        window.location.href = '/../../register/register.template.client.html';
     }
 
-    function registrationFailed(userObjStr) {
+    function registrationFailed() {
 
         // same username as already in database
         //if (usernameFld.val() == "fail") {
@@ -50,13 +62,13 @@
         if (passwordFld.val() !== password2Fld.val()) {
             alert("Registration Failed - Passwords do not match.");
         } else {
-            registrationSuccessful(userObjStr)
+            registrationSuccessful()
         }
     }
 
     function navigateToLogin() {
-        console.log("Pushed login");
-        window.location.href = '/jquery/components/login/login.template.client.html';
+        console.log("go to login page");
+        //window.location.href = ('../login/login.template.client.html');
     }
 
 })()

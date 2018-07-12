@@ -19,6 +19,8 @@
     function init() {
         userService.findAllUsers()
             .then(renderUsers);
+
+        $createBtn.click(createUser);
     }
     init();
 
@@ -28,8 +30,8 @@
         tbody = $('tbody');
         template = $('.template');
         $('#createUser').click(createUser);
-        $('#deleteUser').click(deleteUser());
-        $('#updateUser').click(updateUser());
+        $('#deleteUser').click(deleteUser);
+        $('#updateUser').click(updateUser);
 
         // need select user too
 
@@ -106,6 +108,7 @@
     // updates the list of users on server response
     function createUser() {
         console.log('createUser');
+        alert('Created User');
 
         var username = $('#usernameFld').val();
         var password = $('#passwordFld').val();
@@ -130,7 +133,11 @@
 
     // find user by id
     function findUserById() {
-        //
+        var url = "/api/user" + id;
+        fetch(url)
+            .then(function(response) {
+                return response.json();
+            });
     }
 
     //
@@ -140,12 +147,14 @@
 
     function deleteUser(event) {
         console.log(event);
+        alert("delete user")
         var $button = $(event.currentTarget);
         var id = $button.attr('id');
 
-        userService
-            .deleteUser(id)
-            .then(function () {
+        var url = "/api/user/" + id;
+        fetch(url, {
+            method:'delete'
+        }).then(function () {
                 userService
                     .findAllUsers()
                     .then(renderUsers);
@@ -170,6 +179,19 @@
     function editUser(event) {
         console.log('editUser');
         console.log(event);
+
+        var $button = $(event.currentTarget);
+        var id = $button.attr('id');
+
+        var url = "/api/user/" + id;
+        fetch(url, {
+            method:'post'
+        }).then(function () {
+            userService
+                .findAllUsers()
+                .then(renderUsers);
+        });
+
     }
 
 })();

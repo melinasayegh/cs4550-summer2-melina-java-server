@@ -31,34 +31,37 @@
             headers: {
                 'content-type': 'application/json'
             }
-        }).then(navigateToProfile(userObjStr));
+        }).then(loginSuccessful)
     }
 
 
     // if login successful
-    function navigateToProfile(userObjStr) {
-        window.location.href = '/jquery/components/profile/profile.template.client.html';
+    function loginSuccessful() {
+        alert(username + "registered!")
+        console.log(username);
+        console.log("go to profile page");
+        window.location.href = '../../profile/profile.template.client.html';
     }
 
-    /*
     function loginFailed() {
 
+        alert("Oops, something's wrong.")
         // if username is not in database
-        if () {
-            alert("Login Failed - The user is incorrect.")
-        }
+        //if () {
+        //    alert("Login Failed - The user is incorrect.")
+        //}
 
         // password is incorrect for the username
-        else if () {
-            alert("Login Failed - Incorrect password.")
-        } else {
-            navigateToProfile()
-        }
+        //else if () {
+        //    alert("Login Failed - Incorrect password.")
+        //} else {
+        //    navigateToProfile()
+        //}
     }
-    */
 
     function navigateToRegister() {
-        window.location.href = '/components/register/register.template.client.html';
+        console.log("go to register page")
+       //window.location.href = '/components/profile/profile.template.client.html\';
     }
 
 })();

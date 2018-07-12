@@ -1,18 +1,21 @@
 (function () {
 
-    function init() {
+    var $username, $firstName, $lastName,
+        $updateBtn;
+    // this should come from the session
+    var currentUser = null;
 
-        // this should come from session
-        var currentUserId = null;
-        var $username, $firstName, $lastName, $updateBtn;
+    function init() {
 
         $username = $("#username");
         $firstName = $("#firstName");
         $lastName = $("#lastName");
         $updateBtn = $("#updateBtn");
 
+        $updateBtn.click(updateUser);
+
         profile()
-            .then(renderUser)
+            .then(renderUser);
     }
 
     init();
@@ -21,12 +24,12 @@
         var user = {
             firstName: $firstName.val(),
             lastName: $lastName.val()
-        }
+        };
 
-        fetch("/apu/user" + currentUser.id, {
+        fetch("/api/user/" + currentUser.id, {
             method: 'put',
             body: JSON.stringify(user),
-            'credentials' : 'include',
+            'credentials': 'include',
             headers: {
                 'content-type': 'application/json'
             }
@@ -34,10 +37,7 @@
     }
 
     function renderUser(user) {
-        console.log(user);
-
         currentUser = user;
-
         $username.val(user.username);
         $firstName.val(user.firstName);
         $lastName.val(user.lastName);
@@ -45,22 +45,29 @@
 
 
     function findUserById(userId) {
-        return fetch('/api/user' + userId)
+        return fetch('/api/user/' + userId)
             .then(function (response) {
-                return repsonse.json();
-            })
-    }
-
-    function handleRepsonse() {
-
+                return response.json();
+            });
     }
 
     function profile() {
-        return fetch('/api/profile', {
+        return fetch('/profile', {
             'credentials': 'include'
         })
             .then(function (response) {
                 return response.json();
             });
     }
+
+    function logout() {
+
+
+    }
+
+
+    function handleResponse() {
+
+    }
+
 })
