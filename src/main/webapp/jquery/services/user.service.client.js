@@ -12,13 +12,15 @@ function UserServiceClient() {
     // accepts a user object and POSTs it to a user Web service
     // receives status
     function createUser(user, callback) {
+
         var url = "/api/user";
-
         return fetch(url, {
-            method: 'post',
-            body: user
+            method:'POST',
+            body: JSON.stringify(user),
+            headers:{
+                "Content-Type": "application/json"
+            }
         })
-
     }
 
     // sends GET request to a user Web service
@@ -45,7 +47,15 @@ function UserServiceClient() {
     // accepts a user id and user object with new property values for the user id
     // sends PUT requests with user object and user id as path parameter
     function updateUser(userId, user, callback) {
+        var url = "/api/user/" + {userId};
 
+        return fetch(url, {
+            method: 'put',
+            body: JSON.stringify(user),
+            headers:{
+                "Content-Type": "application/json"
+            }
+        })
     }
 
     // sends a DELETE request to user Web service with user as path parameter for user to remove

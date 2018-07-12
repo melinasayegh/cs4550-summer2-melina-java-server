@@ -109,7 +109,7 @@
     // updates the list of users on server response
     function createUser() {
         console.log('createUser');
-        alert('Created User');
+        alert('Creating User');
 
         var user = {
             username: $usernameStr.val(),
@@ -120,14 +120,8 @@
             role: $roleStr.val()
         };
 
-        var url = "/api/user";
-        fetch(url, {
-            method:'POST',
-            body: JSON.stringify(user),
-            headers:{
-                "Content-Type": "application/json"
-            }
-        }).then(function () {
+        userService.createUser(user)
+            .then(function () {
             userService
                 .findAllUsers()
                 .then(renderUsers);
@@ -153,20 +147,14 @@
             role: $roleStr.val()
         };
 
-        /*
-        var url = "/api/user/" + id;
-        fetch(url, {
-            method:'PUT',
-            body: JSON.stringify(user),
-            headers:{
-                "Content-Type": "application/json"
-            }
-        }).then(function () {
+/*
+        userService.updateUser(user)
+            .then(function () {
             userService
                 .findAllUsers()
                 .then(renderUsers);
         });
-        */
+*/
     }
 
 
