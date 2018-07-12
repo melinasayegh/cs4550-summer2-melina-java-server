@@ -56,7 +56,7 @@ public class UserService {
 	public List<User> findAllUsers() {
 		return (List<User>) userRepository.findAll();
 	}
-
+	
 	@PutMapping("/api/user/{userId}")
 	public User updateUser(
 			@PathVariable("userId") int id,
@@ -64,6 +64,7 @@ public class UserService {
 		Optional<User> optional = userRepository.findById(id);
 		if (optional.isPresent()) {
 			User user = optional.get();
+			user.setPassword(newUser.getPassword());
 			user.setFirstName(newUser.getFirstName());
 			user.setLastName(newUser.getLastName());
 			user.setEmail(newUser.getEmail());

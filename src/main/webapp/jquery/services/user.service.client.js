@@ -12,7 +12,6 @@ function UserServiceClient() {
     // accepts a user object and POSTs it to a user Web service
     // receives status
     function createUser(user, callback) {
-
         var url = "/api/user";
         return fetch(url, {
             method:'POST',
@@ -48,9 +47,8 @@ function UserServiceClient() {
     // sends PUT requests with user object and user id as path parameter
     function updateUser(userId, user, callback) {
         var url = "/api/user/" + {userId};
-
         return fetch(url, {
-            method: 'put',
+            method: 'PUT',
             body: JSON.stringify(user),
             headers:{
                 "Content-Type": "application/json"

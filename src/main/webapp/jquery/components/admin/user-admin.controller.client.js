@@ -133,11 +133,6 @@
         console.log('updateUser');
         alert('Updating User');
 
-        var $button = $(event.currentTarget);
-        var id = $button.attr('id');
-
-
-
         var user = {
             username: $usernameStr.val(),
             password: $passwordStr.val(),
@@ -147,14 +142,13 @@
             role: $roleStr.val()
         };
 
-/*
-        userService.updateUser(user)
+        // need to give it just the id not whole user
+        userService.updateUser()
             .then(function () {
             userService
                 .findAllUsers()
                 .then(renderUsers);
         });
-*/
     }
 
     function deleteUser(event) {
@@ -163,10 +157,8 @@
         var $button = $(event.currentTarget);
         var id = $button.attr('id');
 
-        var url = "/api/user/" + id;
-        fetch(url, {
-            method:'delete'
-        }).then(function () {
+        userService.deleteUser(id)
+            .then(function () {
                 userService
                     .findAllUsers()
                     .then(renderUsers);
@@ -188,8 +180,8 @@
         tbody.append(clone);
     }
 
-    // edit the user
-    // get this row id and populate the first row with this data
+
+    // get this row id and populate the first row (input fields) with this selected user's data
     function selectUser(event) {
         console.log('selectUser');
         console.log(event);
@@ -208,8 +200,8 @@
                 $emailStr.val(user.email);
                 $dobStr.val(user.dateOfBirth);
                 $roleStr.val(user.role);
+
             }
         );
     }
-
 })();
