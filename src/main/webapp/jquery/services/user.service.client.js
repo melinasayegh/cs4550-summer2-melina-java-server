@@ -34,6 +34,11 @@ function UserServiceClient() {
     // sends GET request with userId as path parameter
     // receives a single JSON object for the userId
     function findUserById(userId, callback) {
+        var url = "/api/user/" + userId;
+        return fetch(url)
+            .then(function(response) {
+                return response.json();
+            });
 
     }
 

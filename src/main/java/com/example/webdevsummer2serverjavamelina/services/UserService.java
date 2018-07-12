@@ -57,9 +57,9 @@ public class UserService {
 		return (List<User>) userRepository.findAll();
 	}
 
-	@PutMapping("/api/user/{userId")
+	@PutMapping("/api/user/{userId}")
 	public User updateUser(
-			@PathVariable("userID") int id,
+			@PathVariable("userId") int id,
 			@RequestBody User newUser) {
 		Optional<User> optional = userRepository.findById(id);
 		if (optional.isPresent()) {
@@ -77,13 +77,10 @@ public class UserService {
 		// or throw exception
 	}
 
-
-
 	@DeleteMapping("/api/user/{userId}")
 	public void deleteUser(@PathVariable("userId") int userId) {
 		userRepository.deleteById(userId);
 	}
-	
 	
 	// login
 	@PostMapping("/api/login")
@@ -91,6 +88,8 @@ public class UserService {
 		User foundUser = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
 		System.out.println("User " + foundUser.getFirstName());
 		session.setAttribute("currentUser", foundUser);
+		
+		// throw exception if user does not exist
 		
 		return foundUser;
 	}

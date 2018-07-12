@@ -45,10 +45,7 @@
     }
 
     function registrationSuccessful() {
-        console.log("registration successful");
-        alert("Registration Successful!");
-        console.log("go to profile page");
-        window.location.href = '/../../register/register.template.client.html';
+        window.location.href = '../register/register.template.client.html';
     }
 
     function registrationFailed() {

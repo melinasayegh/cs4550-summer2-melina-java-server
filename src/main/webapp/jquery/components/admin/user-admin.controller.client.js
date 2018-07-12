@@ -1,8 +1,6 @@
 //IIFE
 (function () {
 
-    $(main);
-
     var $usernameStr, $passwordStr;
     var $firstNameStr, $lastNameStr, $emailStr, $dobStr, $roleStr;
 
@@ -10,7 +8,7 @@
     var $userRowTemplate, $tbody;
 
     // this is the user-input row
-    var template;
+    var $template;
 
     var userService = new UserServiceClient();
 
@@ -18,7 +16,12 @@
 
     function init() {
 
+        $tbody = $('#tbody');
+        $template = $('#template');
+
         $createBtn   = $('#createBtn');
+        $updateBtn   = $('#updateBtn');
+
         $usernameStr = $('#usernameFld');
         $passwordStr = $('#passwordFld');
         $firstNameStr = $('#firstNameFld');
@@ -35,18 +38,6 @@
     }
     init();
 
-
-    //
-    function main() {
-        tbody = $('tbody');
-        template = $('.template');
-        $createBtn.click(createUser);
-        $updateBtn.click(updateUser);
-
-        // need select user too
-
-        findAllUsers();
-    }
 
     // retrieve all users and passes response to renderUsers
     function findAllUsers() {
@@ -129,10 +120,13 @@
             role: $roleStr.val()
         };
 
-        var url = "/api/user/";
+        var url = "/api/user";
         fetch(url, {
-            method:'post',
-            body: user
+            method:'POST',
+            body: JSON.stringify(user),
+            headers:{
+                "Content-Type": "application/json"
+            }
         }).then(function () {
             userService
                 .findAllUsers()
@@ -140,19 +134,41 @@
         });
     }
 
-    // find user by id
-    function findUserById() {
-        var url = "/api/user" + id;
-        fetch(url)
-            .then(function(response) {
-                return response.json();
-            });
+    // update the user
+    function updateUser() {
+        console.log('updateUser');
+        alert('Updating User');
+
+        var $button = $(event.currentTarget);
+        var id = $button.attr('id');
+
+
+
+        var user = {
+            username: $usernameStr.val(),
+            password: $passwordStr.val(),
+            firstName: $firstNameStr.val(),
+            lastName: $lastNameStr.val(),
+            email: $emailStr.val(),
+            role: $roleStr.val()
+        };
+
+        /*
+        var url = "/api/user/" + id;
+        fetch(url, {
+            method:'PUT',
+            body: JSON.stringify(user),
+            headers:{
+                "Content-Type": "application/json"
+            }
+        }).then(function () {
+            userService
+                .findAllUsers()
+                .then(renderUsers);
+        });
+        */
     }
 
-    //
-    function updateUser() {
-        //
-    }
 
     function deleteUser(event) {
         console.log(event);
@@ -185,6 +201,8 @@
         tbody.append(clone);
     }
 
+    // edit the user
+    // get this row id and populate the first row with this data
     function editUser(event) {
         console.log('editUser');
         console.log(event);
@@ -192,15 +210,22 @@
         var $button = $(event.currentTarget);
         var id = $button.attr('id');
 
-        var url = "/api/user/" + id;
-        fetch(url, {
-            method:'post'
-        }).then(function () {
-            userService
-                .findAllUsers()
-                .then(renderUsers);
-        });
 
+
+        userService.findUserById(id).then(
+            function (user) {
+
+                //var editThisUser = new User(user);
+
+                $usernameStr.value = user.username;
+                $lastNameStr = user.lastName;
+                $firstNameStr = user.firstName;
+                $lastNameStr = user.lastName;
+                $emailStr = user.email;
+                $dobStr = user.dateOfBirth;
+                $roleStr = user.role;
+            }
+        );
     }
 
 })();
