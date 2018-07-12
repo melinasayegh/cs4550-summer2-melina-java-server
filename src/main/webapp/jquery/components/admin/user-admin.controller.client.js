@@ -93,7 +93,7 @@
             deleteBtn.click(deleteUser);
             deleteBtn.attr('id', user.id);
 
-            editBtn.click(editUser);
+            editBtn.click(selectUser);
             editBtn.attr('id', user.id);
 
             td.append(deleteBtn);

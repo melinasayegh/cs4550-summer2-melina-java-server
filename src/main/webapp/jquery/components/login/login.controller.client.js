@@ -58,10 +58,4 @@
         //    navigateToProfile()
         //}
     }
-
-    function navigateToRegister() {
-        console.log("go to register page")
-       //window.location.href = '/components/profile/profile.template.client.html\';
-    }
-
 })();
