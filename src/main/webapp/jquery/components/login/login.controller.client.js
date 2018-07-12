@@ -12,8 +12,7 @@
         $loginBtn    = $('#loginBtn');
         $registerBtn = $('#registerBtn');
 
-        $loginBtn.click(login());
-        $registerBtn.click(navigateToRegister());
+        $loginBtn.click(login);
     }
     init();
 
@@ -25,7 +24,6 @@
 
         var userObjStr = JSON.stringify(user);
 
-
         fetch('/api/login', {
             method: 'post',
             body: userObjStr,
@@ -33,7 +31,7 @@
             headers: {
                 'content-type': 'application/json'
             }
-        }).then(loginSuccessful(userObjStr), loginFailed());
+        }).then(navigateToProfile(userObjStr));
     }
 
 

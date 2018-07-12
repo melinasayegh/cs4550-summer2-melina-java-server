@@ -29,19 +29,19 @@ public class UserService {
 	
 	// execute whenever you see: http://localhost:8080/api/register
 	
-	@PostMapping("/api/register")
-	// instantiate user object and getting the user from the Request Body 
-	public User createUser(@RequestBody User user, HttpSession session) {
-		// save: returns instances of the same thing that it instantiates -- users
-		User cu = userRepository.save(user);
-		return cu;
-	}
+//	@PostMapping("/api/register")
+//	// instantiate user object and getting the user from the Request Body 
+//	public User createUser(@RequestBody User user, HttpSession session) {
+//		// save: returns instances of the same thing that it instantiates -- users
+//		User cu = userRepository.save(user);
+//		return cu;
+//	}
 
 	@PostMapping("/api/register")
 	// instantiate user object and getting the user from the Request Body 
 	public User register(@RequestBody User user, HttpSession session) {
 		// save: returns instances of the same thing that it instantiates -- users
-		User cu = createUser(user, session);
+		User cu = userRepository.save(user);
 		session.setAttribute("currentUser", cu);
 		return cu;
 	}
@@ -52,17 +52,9 @@ public class UserService {
 		return userRepository.findById(id);
 	}
 	
-	@GetMapping("/api/user")	
-	public Iterable<User> findAllUsers(
-			@RequestParam(name="username", required=false) String username, 
-			@RequestParam(name="password", required=false) String password) {
-		if(username != null && password != null) {
-			return (Iterable<User>) userRepository.findUserByCredentials(username, password);
-		} else if(username != null) {
-			return userRepository.findUserByUsername(username);
-		} else {
-			return userRepository.findAll();
-		}
+	@GetMapping("/api/user")
+	public List<User> findAllUsers() {
+		return (List<User>) userRepository.findAll();
 	}
 
 	@PutMapping("/api/user/{userId")
@@ -96,11 +88,11 @@ public class UserService {
 	// login
 	@PostMapping("/api/login")
 	public User login(@RequestBody User user, HttpSession session) {
-		User newUser = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
-		System.out.println("USer " + newUser.getFirstName());
-		session.setAttribute("currentUser", newUser);
+		User foundUser = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+		System.out.println("User " + foundUser.getFirstName());
+		session.setAttribute("currentUser", foundUser);
 		
-		return newUser;
+		return foundUser;
 	}
 	
 	

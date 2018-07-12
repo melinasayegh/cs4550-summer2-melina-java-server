@@ -8,8 +8,8 @@
     var passwordFld  = $('#password');
     var password2Fld = $('#password2');
 
-    registerBtn.click(registerHandler());
-    //loginBtn.click(navigateToLogin());
+    registerBtn.click(registerHandler);
+    loginBtn.click(navigateToLogin);
 
     function registerHandler() {
         var usernameStr = usernameFld.val();
@@ -30,32 +30,32 @@
                 'Content-Type': 'application/json'
             },
             'credentials': 'include'
-        }).then(registrationSuccessful(userObjStr), registrationFailed)
+        }).then(registrationSuccessful(userObjStr), registrationFailed(userObjStr))
 
     }
 
     function registrationSuccessful(userObjStr) {
+        console.log("registration successful");
         window.location.href = '/jquery/components/profile/profile.template.client.html';
     }
 
-    function registrationFailed() {
+    function registrationFailed(userObjStr) {
 
         // same username as already in database
-        if (usernameFld.val() == "fail") {
-            alert("Registration Failed - user already exists.");
-        }
+        //if (usernameFld.val() == "fail") {
+        //    alert("Registration Failed - user already exists.");
+        //}
 
         // if passwords don't match
-        else if (passwordFld.val() !== password2Fld.val()) {
+        if (passwordFld.val() !== password2Fld.val()) {
             alert("Registration Failed - Passwords do not match.");
-        }
-
-        else {
-            registrationSuccessful()
+        } else {
+            registrationSuccessful(userObjStr)
         }
     }
 
     function navigateToLogin() {
+        console.log("Pushed login");
         window.location.href = '/jquery/components/login/login.template.client.html';
     }
 
