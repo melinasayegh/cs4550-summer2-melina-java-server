@@ -1,7 +1,6 @@
 (function () {
 
-    var $username, $firstName, $lastName,
-        $updateBtn;
+    var $username, $firstName, $lastName, $updateBtn;
     // this should come from the session
     var currentUser = null;
 

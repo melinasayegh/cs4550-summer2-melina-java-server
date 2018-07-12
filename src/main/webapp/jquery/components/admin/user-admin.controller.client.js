@@ -3,10 +3,10 @@
 
     $(main);
 
-    var $usernameFld, $passwordFld;
-    var $firstNameFld, $lastNameFld, $emailFld;
+    var $usernameStr, $passwordStr;
+    var $firstNameStr, $lastNameStr, $emailStr, $dobStr, $roleStr;
 
-    var $removeBtn, $editBtn, $createBtn;
+    var $removeBtn, $editBtn, $createBtn, $updateBtn;
     var $userRowTemplate, $tbody;
 
     // this is the user-input row
@@ -17,10 +17,21 @@
 
 
     function init() {
+
+        $createBtn   = $('#createBtn');
+        $usernameStr = $('#usernameFld');
+        $passwordStr = $('#passwordFld');
+        $firstNameStr = $('#firstNameFld');
+        $lastNameStr = $('#lastNameFld');
+        $emailStr = $('#emailFld');
+        $dobStr = $('#dobFld');
+        $roleStr = $('#roleFld');
+
         userService.findAllUsers()
             .then(renderUsers);
 
         $createBtn.click(createUser);
+        $updateBtn.click(updateUser);
     }
     init();
 
@@ -29,9 +40,8 @@
     function main() {
         tbody = $('tbody');
         template = $('.template');
-        $('#createUser').click(createUser);
-        $('#deleteUser').click(deleteUser);
-        $('#updateUser').click(updateUser);
+        $createBtn.click(createUser);
+        $updateBtn.click(updateUser);
 
         // need select user too
 
@@ -110,25 +120,24 @@
         console.log('createUser');
         alert('Created User');
 
-        var username = $('#usernameFld').val();
-        var password = $('#passwordFld').val();
-        var firstName = $('#firstNameFld').val();
-        var lastName = $('#lastNameFld').val();
-        var email = $('#emailFld').val();
-        var role = $('#roleFld').val();
-
         var user = {
-            username: username,
-            password: password,
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            role: role
+            username: $usernameStr.val(),
+            password: $passwordStr.val(),
+            firstName: $firstNameStr.val(),
+            lastName: $lastNameStr.val(),
+            email: $emailStr.val(),
+            role: $roleStr.val()
         };
 
-        userService
-            .createUser(user)
-            .then(findAllUsers);
+        var url = "/api/user/";
+        fetch(url, {
+            method:'post',
+            body: user
+        }).then(function () {
+            userService
+                .findAllUsers()
+                .then(renderUsers);
+        });
     }
 
     // find user by id

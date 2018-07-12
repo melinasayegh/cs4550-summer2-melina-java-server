@@ -29,13 +29,13 @@ public class UserService {
 	
 	// execute whenever you see: http://localhost:8080/api/register
 	
-//	@PostMapping("/api/register")
-//	// instantiate user object and getting the user from the Request Body 
-//	public User createUser(@RequestBody User user, HttpSession session) {
-//		// save: returns instances of the same thing that it instantiates -- users
-//		User cu = userRepository.save(user);
-//		return cu;
-//	}
+	@PostMapping("/api/user")
+	// instantiate user object and getting the user from the Request Body 
+	public User createUser(@RequestBody User user, HttpSession session) {
+		// save: returns instances of the same thing that it instantiates -- users
+		User cu = userRepository.save(user);
+		return cu;
+	}
 
 	@PostMapping("/api/register")
 	// instantiate user object and getting the user from the Request Body 
