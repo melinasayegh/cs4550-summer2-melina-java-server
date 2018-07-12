@@ -12,6 +12,12 @@ function UserServiceClient() {
     // accepts a user object and POSTs it to a user Web service
     // receives status
     function createUser(user, callback) {
+        var url = "/api/user";
+
+        return fetch(url, {
+            method: 'post',
+            body: user
+        })
 
     }
 
@@ -40,7 +46,7 @@ function UserServiceClient() {
     // sends a DELETE request to user Web service with user as path parameter for user to remove
     // receives status
     function deleteUser(userId, callback) {
-        var url = "/api/user/" + id;
+        var url = "/api/user/" + userId;
 
         return fetch(url, {
             method: 'delete'

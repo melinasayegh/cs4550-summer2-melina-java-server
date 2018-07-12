@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -27,28 +28,23 @@ public class UserService {
 	
 	
 	// execute whenever you see: http://localhost:8080/api/register
-
 	
-	// should this be createUser() ??
+	@PostMapping("/api/user")
+	// instantiate user object and getting the user from the Request Body 
+	public User createUser(@RequestBody User user, HttpSession session) {
+		// save: returns instances of the same thing that it instantiates -- users
+		User cu = userRepository.save(user);
+		return cu;
+	}
+
 	@PostMapping("/api/register")
 	// instantiate user object and getting the user from the Request Body 
 	public User register(@RequestBody User user, HttpSession session) {
 		// save: returns instances of the same thing that it instantiates -- users
 		User cu = userRepository.save(user);
-		
 		session.setAttribute("currentUser", cu);
-		
 		return cu;
 	}
-	
-	// retrieving data - dynamic, meant for api
-	@GetMapping("/api/user")
-	public List<User> findAllUsers() {
-		System.out.print(userRepository.findAll());
-		// returns iterable, so cast to List of Users
-		return (List<User>) userRepository.findAll();
-	}
-	
 	
 	@GetMapping("/api/user/{userId}")
 	public Optional<User> findUserById(@PathVariable("userId") String userId) {
@@ -56,7 +52,11 @@ public class UserService {
 		return userRepository.findById(id);
 	}
 	
-	
+	@GetMapping("/api/user")
+	public List<User> findAllUsers() {
+		return (List<User>) userRepository.findAll();
+	}
+
 	@PutMapping("/api/user/{userId")
 	public User updateUser(
 			@PathVariable("userID") int id,
@@ -66,26 +66,33 @@ public class UserService {
 			User user = optional.get();
 			user.setFirstName(newUser.getFirstName());
 			user.setLastName(newUser.getLastName());
+			user.setEmail(newUser.getEmail());
+			user.setPhone(newUser.getPhone());
+			user.setRole(newUser.getRole());
+			user.setDOB(newUser.getDOB());
+			
 			return userRepository.save(user);
 		}
 		return null;
 		// or throw exception
 	}
 
-	
+
+
 	@DeleteMapping("/api/user/{userId}")
 	public void deleteUser(@PathVariable("userId") int userId) {
 		userRepository.deleteById(userId);
 	}
 	
+	
 	// login
 	@PostMapping("/api/login")
 	public User login(@RequestBody User user, HttpSession session) {
-		User newUser = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
-		System.out.println("USer " + newUser.getFirstName());
-		session.setAttribute("currentUser", newUser);
+		User foundUser = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
+		System.out.println("User " + foundUser.getFirstName());
+		session.setAttribute("currentUser", foundUser);
 		
-		return newUser;
+		return foundUser;
 	}
 	
 	
@@ -95,10 +102,20 @@ public class UserService {
 		return userRepository.findById(currentUser.getId());
 	}
 	
+	@PutMapping("/api/profile")
+	public User updateProfile(@RequestBody User user, HttpSession session) { 
+		if (user != null) {
+		    session.setAttribute("user", user);
+		    return updateUser(user.getId(), user);
+		} 
+		else { 
+			return null;
+		
+		}
+	}
+
 	@PostMapping("/api/logout")
 	public void logout(HttpSession session) {
 		session.invalidate();
 	}
-
-	
 }
