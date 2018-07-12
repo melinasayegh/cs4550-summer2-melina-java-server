@@ -42,7 +42,6 @@
         } else {
             alert("Registration Failed - Passwords do not match.");
         }
-
     }
 
     function registrationSuccessful() {

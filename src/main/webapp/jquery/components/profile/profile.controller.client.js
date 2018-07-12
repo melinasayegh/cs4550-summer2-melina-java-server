@@ -61,9 +61,7 @@
 
     function logout() {
 
-
     }
-
 
     function handleResponse() {
 

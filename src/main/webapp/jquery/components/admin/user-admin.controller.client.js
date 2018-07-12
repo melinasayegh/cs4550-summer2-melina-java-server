@@ -157,7 +157,6 @@
 */
     }
 
-
     function deleteUser(event) {
         console.log(event);
         alert("delete user")
@@ -198,20 +197,17 @@
         var $button = $(event.currentTarget);
         var id = $button.attr('id');
 
-
-
         userService.findUserById(id).then(
             function (user) {
-
                 //var editThisUser = new User(user);
 
-                $usernameStr.value = user.username;
-                $lastNameStr = user.lastName;
-                $firstNameStr = user.firstName;
-                $lastNameStr = user.lastName;
-                $emailStr = user.email;
-                $dobStr = user.dateOfBirth;
-                $roleStr = user.role;
+                $usernameStr.val(user.username);
+                $passwordStr.val(user.password);
+                $firstNameStr.val(user.firstName);
+                $lastNameStr.val(user.lastName);
+                $emailStr.val(user.email);
+                $dobStr.val(user.dateOfBirth);
+                $roleStr.val(user.role);
             }
         );
     }
