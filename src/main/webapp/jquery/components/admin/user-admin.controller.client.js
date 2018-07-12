@@ -182,7 +182,7 @@
         clone.attr('id', user.id);
 
         clone.find('.delete').click(deleteUser);
-        clone.find('.edit').click(editUser);
+        clone.find('.edit').click(selectUser);
 
         clone.find('.username')
             .html(user.username);
@@ -191,8 +191,8 @@
 
     // edit the user
     // get this row id and populate the first row with this data
-    function editUser(event) {
-        console.log('editUser');
+    function selectUser(event) {
+        console.log('selectUser');
         console.log(event);
 
         var $button = $(event.currentTarget);
