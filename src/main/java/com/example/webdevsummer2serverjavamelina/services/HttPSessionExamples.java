@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HttPSessionExamples {
 	
-	
 	@GetMapping("/api/session/set/{attr}/{value}")
 	public String setSessionAttribute(
 			@PathVariable("attr") String attr,
@@ -25,8 +24,4 @@ public class HttPSessionExamples {
 			HttpSession session) {
 		return (String) session.getAttribute(attr);
 	}
-
-
-	
-
 }

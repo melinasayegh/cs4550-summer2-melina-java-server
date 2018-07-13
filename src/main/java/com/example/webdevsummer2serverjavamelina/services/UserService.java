@@ -91,10 +91,9 @@ public class UserService {
 		session.setAttribute("currentUser", foundUser);
 		
 		// throw exception if user does not exist
-		
+	
 		return foundUser;
 	}
-	
 	
 	@GetMapping("/api/profile") 
 	public Optional<User> profile(HttpSession session) {

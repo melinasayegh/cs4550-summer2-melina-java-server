@@ -23,14 +23,24 @@
         $updateBtn.click(updateUser);
 
         // find this user
-        // render this user
-
+        userService.findUserById(getUserId)
+            .then(renderUser)
     }
     init();
 
 
+    fetch('/api/profile', {
+        credentials: 'include'
+    }).then(function(response) {
+        console.log(response)
+    })
+
+    function getUserId() {
+
+    }
+
     function renderUser(user) {
-        currentUser = user;
+        //currentUser = user;
         $username.val(user.username);
         $password.val(user.password);
         $firstName.val(user.firstName);
@@ -70,8 +80,7 @@
             /* HERE HAVE TO RE-RENDER USER
             .then(function () {
             userService
-                .findAllUsers()
-                .then(renderUsers);
+                [...];
         });
         */
     }
