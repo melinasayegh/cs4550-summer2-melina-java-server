@@ -30,7 +30,24 @@
 
         var userObjStr = JSON.stringify(userObj);
 
-        if (passwordStr == password2Str) {
+
+        // if passwords don't match, don't register
+        if (passwordStr != password2Str) {
+            alert("Registration Failed - Passwords do not match.");
+        }
+
+        // if username field is blank, don't register
+        else if (usernameStr == "") {
+            alert("Registration Failed - Please create a username.");
+
+        }
+
+        // if password field is blank, don't register
+        else if (passwordStr == "") {
+            alert("Registration Failed - Please set a password.");
+        }
+
+        else {
             fetch('/api/register', {
                 method: 'post',
                 body: userObjStr,
@@ -39,8 +56,6 @@
                     'Content-Type': 'application/json'
                 }
             }).then(registrationSuccessful)
-        } else {
-            alert("Registration Failed - Passwords do not match.");
         }
     }
 

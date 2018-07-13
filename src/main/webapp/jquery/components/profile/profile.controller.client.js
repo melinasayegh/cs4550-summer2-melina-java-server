@@ -80,7 +80,9 @@
             headers: {
                 'content-type': 'application/json'
             }
-        }).then(renderUser(user))
+        }).then(function (user1) {
+            renderUser(user1);
+        })
     }
 
     function logout() {
