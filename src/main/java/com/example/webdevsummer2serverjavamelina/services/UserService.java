@@ -56,14 +56,15 @@ public class UserService {
 	public List<User> findAllUsers() {
 		return (List<User>) userRepository.findAll();
 	}
-
-	@PutMapping("/api/user/{userId")
+	
+	@PutMapping("/api/user/{userId}")
 	public User updateUser(
-			@PathVariable("userID") int id,
+			@PathVariable("userId") int id,
 			@RequestBody User newUser) {
 		Optional<User> optional = userRepository.findById(id);
 		if (optional.isPresent()) {
 			User user = optional.get();
+			user.setPassword(newUser.getPassword());
 			user.setFirstName(newUser.getFirstName());
 			user.setLastName(newUser.getLastName());
 			user.setEmail(newUser.getEmail());
@@ -77,13 +78,10 @@ public class UserService {
 		// or throw exception
 	}
 
-
-
 	@DeleteMapping("/api/user/{userId}")
 	public void deleteUser(@PathVariable("userId") int userId) {
 		userRepository.deleteById(userId);
 	}
-	
 	
 	// login
 	@PostMapping("/api/login")
@@ -92,9 +90,10 @@ public class UserService {
 		System.out.println("User " + foundUser.getFirstName());
 		session.setAttribute("currentUser", foundUser);
 		
+		// throw exception if user does not exist
+	
 		return foundUser;
 	}
-	
 	
 	@GetMapping("/api/profile") 
 	public Optional<User> profile(HttpSession session) {
@@ -110,7 +109,6 @@ public class UserService {
 		} 
 		else { 
 			return null;
-		
 		}
 	}
 

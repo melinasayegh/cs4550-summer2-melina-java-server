@@ -3,7 +3,6 @@
 (function () {
 
     var registerBtn  = $('#registerBtn');
-    var loginBtn     = $('#loginBtn');
     var usernameFld  = $('#username');
     var passwordFld  = $('#password');
     var password2Fld = $('#password2');
@@ -12,7 +11,6 @@
     var emailFld     = $('#email');
 
     registerBtn.click(registerHandler);
-    loginBtn.click(navigateToLogin);
 
     function registerHandler() {
         var usernameStr = usernameFld.val();
@@ -32,43 +30,23 @@
 
         var userObjStr = JSON.stringify(userObj);
 
-        fetch('/api/register', {
-            method: 'post',
-            body: userObjStr,
-            credentials: 'include',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-
-        }).then(registrationSuccessful, registrationFailed)
-
-    }
-
-    function registrationSuccessful() {
-        console.log("registration successful");
-        alert("Registration Successful!");
-        console.log("go to profile page");
-        window.location.href = '/../../register/register.template.client.html';
-    }
-
-    function registrationFailed() {
-
-        // same username as already in database
-        //if (usernameFld.val() == "fail") {
-        //    alert("Registration Failed - user already exists.");
-        //}
-
-        // if passwords don't match
-        if (passwordFld.val() !== password2Fld.val()) {
-            alert("Registration Failed - Passwords do not match.");
+        if (passwordStr == password2Str) {
+            fetch('/api/register', {
+                method: 'post',
+                body: userObjStr,
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(registrationSuccessful)
         } else {
-            registrationSuccessful()
+            alert("Registration Failed - Passwords do not match.");
         }
     }
 
-    function navigateToLogin() {
-        console.log("go to login page");
-        //window.location.href = ('../login/login.template.client.html');
+    function registrationSuccessful() {
+        alert("Registration Successful!")
+        window.location.href = '../profile/profile.template.client.html';
     }
 
 })()

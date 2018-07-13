@@ -1,72 +1,98 @@
 (function () {
 
-    var $username, $firstName, $lastName, $updateBtn;
+    var $username, $password;
+    var $firstName, $lastName, $phone, $email, $role, $dob;
+    var $updateBtn;
     // this should come from the session
     var currentUser = null;
 
+    var userService = new UserServiceClient();
+
     function init() {
 
-        $username = $("#username");
-        $firstName = $("#firstName");
-        $lastName = $("#lastName");
+        $username = $("#userNameFld");
+        $password = $("#passwordFld");
+        $lastName = $("#lastNameFld");
+        $phone = $("#phoneFld");
+        $email = $("#emailFld");
+        $role = $("#roleFld");
+        $dob = $("#dobFld");
+
         $updateBtn = $("#updateBtn");
 
         $updateBtn.click(updateUser);
 
-        profile()
-            .then(renderUser);
+        // find this user
+        userService.findUserById(getUserId)
+            .then(renderUser)
     }
-
     init();
 
-    function updateUser() {
-        var user = {
-            firstName: $firstName.val(),
-            lastName: $lastName.val()
-        };
 
-        fetch("/api/user/" + currentUser.id, {
-            method: 'put',
-            body: JSON.stringify(user),
-            'credentials': 'include',
-            headers: {
-                'content-type': 'application/json'
-            }
-        });
+    fetch('/api/profile', {
+        credentials: 'include'
+    }).then(function(response) {
+        console.log(response)
+    })
+
+    function getUserId() {
+
     }
 
     function renderUser(user) {
-        currentUser = user;
+        //currentUser = user;
         $username.val(user.username);
+        $password.val(user.password);
         $firstName.val(user.firstName);
         $lastName.val(user.lastName);
+        $phone.val(user.phone);
+        $email.val(user.email);
+        $role.val(user.role);
+        $dob.val(user.dateOfBirth);
     }
 
 
-    function findUserById(userId) {
-        return fetch('/api/user/' + userId)
-            .then(function (response) {
-                return response.json();
-            });
-    }
+    // PUT
+    function updateProfile() {
 
-    function profile() {
-        return fetch('/profile', {
-            'credentials': 'include'
+        var user = {
+            "username": $username.val(),
+            "password": $password.val(),
+            "firstName": $firstName.val(),
+            "lastName": $lastName.val(),
+            "phone": $phone.val(),
+            "email": $email.val(),
+            "role": $role.val(),
+            "dateOfBirth": $dob.val()
+
+        };
+
+        var userObjStr = JSON.stringify(user);
+
+        fetch('/api/profile', {
+            method: 'put',
+            body: userObjStr,
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
         })
-            .then(function (response) {
-                return response.json();
-            });
+            /* HERE HAVE TO RE-RENDER USER
+            .then(function () {
+            userService
+                [...];
+        });
+        */
     }
 
     function logout() {
-
-
-    }
-
-
-    function handleResponse() {
-
+        fetch('/api/logout', {
+            method: 'post',
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
     }
 
 })

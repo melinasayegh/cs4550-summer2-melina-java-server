@@ -37,10 +37,10 @@
 
     // if login successful
     function loginSuccessful() {
-        alert(username + "registered!")
+        alert(username + "logged in!")
         console.log(username);
         console.log("go to profile page");
-        window.location.href = '../../profile/profile.template.client.html';
+        window.location.href = '../profile/profile.template.client.html';
     }
 
     function loginFailed() {
@@ -58,10 +58,4 @@
         //    navigateToProfile()
         //}
     }
-
-    function navigateToRegister() {
-        console.log("go to register page")
-       //window.location.href = '/components/profile/profile.template.client.html\';
-    }
-
 })();

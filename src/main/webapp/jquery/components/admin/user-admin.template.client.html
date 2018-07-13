@@ -83,9 +83,10 @@
                         </td>
                         <td class="span1">
                             <span class="float-right">
-                                <button id ="searchBtn" class="fa-2x fa fa-search search"></button>
-                                <button id="createBtn" class="fa-2x fa fa-plus   create"></button>
-                                <button id="updateBtn" class="fa-2x fa fa-check  update"></button>
+                                <button type="button" id ="searchBtn" class="fa-2x fa fa-search search"></button>
+                                <button type="button" id="createBtn"
+                                        class="fa-2x fa fa-plus   create"></button>
+                                <button type="button" id="updateBtn" class="fa-2x fa fa-check  update"></button>
                             </span>
                         </td>
                     </tr>
@@ -101,8 +102,8 @@
                         <td>Admin</td>
                         <td>
                             <span class="float-right">
-                                <button class="fa-2x fa fa-times  remove"></button>
-                                <button class="fa-2x fa fa-pencil edit"></button>
+                                <button type="button" class="fa-2x fa fa-times  remove"></button>
+                                <button type="button" class="fa-2x fa fa-pencil edit"></button>
                             </span>
                         </td>
                     </tr>
@@ -127,8 +128,10 @@
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="../../models/user.model.client.js"></script>
         <script src="../../services/user.service.client.js"></script>
         <script src="user-admin.controller.client.js"></script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     </body>

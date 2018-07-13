@@ -13,12 +13,13 @@ function UserServiceClient() {
     // receives status
     function createUser(user, callback) {
         var url = "/api/user";
-
         return fetch(url, {
-            method: 'post',
-            body: user
+            method:'POST',
+            body: JSON.stringify(user),
+            headers:{
+                "Content-Type": "application/json"
+            }
         })
-
     }
 
     // sends GET request to a user Web service
@@ -34,13 +35,25 @@ function UserServiceClient() {
     // sends GET request with userId as path parameter
     // receives a single JSON object for the userId
     function findUserById(userId, callback) {
+        var url = "/api/user/" + userId;
+        return fetch(url)
+            .then(function(response) {
+                return response.json();
+            });
 
     }
 
     // accepts a user id and user object with new property values for the user id
     // sends PUT requests with user object and user id as path parameter
     function updateUser(userId, user, callback) {
-
+        var url = "/api/user/" + {userId};
+        return fetch(url, {
+            method: 'PUT',
+            body: JSON.stringify(user),
+            headers:{
+                "Content-Type": "application/json"
+            }
+        })
     }
 
     // sends a DELETE request to user Web service with user as path parameter for user to remove

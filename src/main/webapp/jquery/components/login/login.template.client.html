@@ -42,7 +42,9 @@
 
                 <div class ="form-group row">
                     <div class="col-sm-10 offset-sm-2">
-                        <button class="custom-button loginBtn" id="loginBtn">
+                        <button class="custom-button loginBtn"
+                                id="loginBtn"
+                        type="button">
                             Sign In
                         </button>
                     </div>
@@ -51,16 +53,18 @@
                 <div class ="form-group row no-account">
                     <label class="col-sm-10 offset-sm-2">
                         Don't have an Account?
-                        <button class="custom-button registerBtn" id="registerBtn">
+                        <a class="custom-button registerBtn" id="registerBtn"
+                           href="../register/register.template.client.html" >
                             Register
-                        </button>
+                        </a>
                     </label>
                 </div>
             </form>
         </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="login.controller.client.js"></script>
+        <script src="../../models/user.model.client.js"></script>
         <script src="../../services/user.service.client.js"></script>
+        <script src="login.controller.client.js"></script>
     </body>
 </html>
