@@ -6,6 +6,7 @@
 
     var $removeBtn, $editBtn, $createBtn, $updateBtn;
     var $userRowTemplate, $tbody;
+    var $selectedUserId;
 
     // this is the user-input row
     var $template;
@@ -15,6 +16,8 @@
 
 
     function init() {
+
+        $selectedUserId = null;
 
         $tbody = $('#tbody');
         $template = $('#template');
@@ -143,11 +146,16 @@
         };
 
         // need to give it just the id not whole user
-        userService.updateUser()
+        userService.updateUser($selectedUserId, user)
             .then(function () {
-            userService
-                .findAllUsers()
-                .then(renderUsers);
+
+                $selectedUserId = null;
+
+                userService
+                    .findAllUsers()
+                    .then(renderUsers);
+
+                clearFields();
         });
     }
 
@@ -189,10 +197,11 @@
         var $button = $(event.currentTarget);
         var id = $button.attr('id');
 
+        $selectedUserId = id;
+
         userService.findUserById(id).then(
             function (user) {
                 //var editThisUser = new User(user);
-
                 $usernameStr.val(user.username);
                 $passwordStr.val(user.password);
                 $firstNameStr.val(user.firstName);
@@ -200,8 +209,17 @@
                 $emailStr.val(user.email);
                 $dobStr.val(user.dateOfBirth);
                 $roleStr.val(user.role);
-
             }
         );
+    }
+
+    function clearFields() {
+        $usernameStr.val("");
+        $passwordStr.val("");
+        $firstNameStr.val("");
+        $lastNameStr.val("");
+        $emailStr.val("");
+        $dobStr.val("");
+        $roleStr.val("");
     }
 })();

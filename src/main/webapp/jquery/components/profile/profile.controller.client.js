@@ -2,7 +2,7 @@
 
     var $username, $password;
     var $firstName, $lastName, $phone, $email, $role, $dob;
-    var $updateBtn;
+    var $updateBtn;// $logoutBtn;
     // this should come from the session
     var currentUser = null;
 
@@ -19,28 +19,28 @@
         $dob = $("#dobFld");
 
         $updateBtn = $("#updateBtn");
+        //$logoutBtn = $("#loginBtn");
 
         $updateBtn.click(updateUser);
 
-        // find this user
-        userService.findUserById(getUserId)
+        profile()
             .then(renderUser)
     }
     init();
 
-
-    fetch('/api/profile', {
-        credentials: 'include'
-    }).then(function(response) {
-        console.log(response)
-    })
-
-    function getUserId() {
-
+    function profile() {
+        return fetch('/api/profile', {
+            method: 'get',
+            credentials: 'include'
+        })
+            .then(function (response) {
+                return response.json();
+            });
     }
 
+
     function renderUser(user) {
-        //currentUser = user;
+        currentUser = user;
         $username.val(user.username);
         $password.val(user.password);
         $firstName.val(user.firstName);
@@ -53,7 +53,7 @@
 
 
     // PUT
-    function updateProfile() {
+    function updateUser() {
 
         var user = {
             "username": $username.val(),
@@ -77,12 +77,6 @@
                 'content-type': 'application/json'
             }
         })
-            /* HERE HAVE TO RE-RENDER USER
-            .then(function () {
-            userService
-                [...];
-        });
-        */
     }
 
     function logout() {
@@ -95,4 +89,4 @@
         })
     }
 
-})
+})();
