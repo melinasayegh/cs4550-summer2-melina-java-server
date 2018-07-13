@@ -46,7 +46,7 @@ function UserServiceClient() {
     // accepts a user id and user object with new property values for the user id
     // sends PUT requests with user object and user id as path parameter
     function updateUser(userId, user, callback) {
-        var url = "/api/user/" + {userId};
+        var url = "/api/user/" + userId;
         return fetch(url, {
             method: 'PUT',
             body: JSON.stringify(user),

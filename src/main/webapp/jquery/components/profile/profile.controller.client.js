@@ -2,7 +2,7 @@
 
     var $username, $password;
     var $firstName, $lastName, $phone, $email, $role, $dob;
-    var $updateBtn;
+    var $updateBtn, $logoutBtn;
     // this should come from the session
     var currentUser = null;
 
@@ -12,6 +12,7 @@
 
         $username = $("#userNameFld");
         $password = $("#passwordFld");
+        $firstName = $("#firstNameFld");
         $lastName = $("#lastNameFld");
         $phone = $("#phoneFld");
         $email = $("#emailFld");
@@ -19,28 +20,29 @@
         $dob = $("#dobFld");
 
         $updateBtn = $("#updateBtn");
+        $logoutBtn = $("#logoutBtn");
 
         $updateBtn.click(updateUser);
+        $logoutBtn.click(logout);
 
-        // find this user
-        userService.findUserById(getUserId)
+        profile()
             .then(renderUser)
     }
     init();
 
-
-    fetch('/api/profile', {
-        credentials: 'include'
-    }).then(function(response) {
-        console.log(response)
-    })
-
-    function getUserId() {
-
+    function profile() {
+        return fetch('/api/profile', {
+            method: 'get',
+            credentials: 'include'
+        })
+            .then(function (response) {
+                return response.json();
+            });
     }
 
+
     function renderUser(user) {
-        //currentUser = user;
+        currentUser = user;
         $username.val(user.username);
         $password.val(user.password);
         $firstName.val(user.firstName);
@@ -53,7 +55,7 @@
 
 
     // PUT
-    function updateProfile() {
+    function updateUser() {
 
         var user = {
             "username": $username.val(),
@@ -67,6 +69,8 @@
 
         };
 
+        currentUser = user;
+
         var userObjStr = JSON.stringify(user);
 
         fetch('/api/profile', {
@@ -76,13 +80,9 @@
             headers: {
                 'content-type': 'application/json'
             }
+        }).then(function (user1) {
+            renderUser(user1);
         })
-            /* HERE HAVE TO RE-RENDER USER
-            .then(function () {
-            userService
-                [...];
-        });
-        */
     }
 
     function logout() {
@@ -92,7 +92,12 @@
             headers: {
                 'content-type': 'application/json'
             }
-        })
+        }).then(navigateToLogin)
     }
 
-})
+    function navigateToLogin() {
+        alert($username + "logged out!")
+        window.location.href = '../login/login.template.client.html';
+    }
+
+})();

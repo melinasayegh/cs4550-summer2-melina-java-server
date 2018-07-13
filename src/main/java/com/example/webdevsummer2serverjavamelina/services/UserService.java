@@ -26,7 +26,6 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	
 	// execute whenever you see: http://localhost:8080/api/register
 	
 	@PostMapping("/api/user")
@@ -90,7 +89,10 @@ public class UserService {
 		System.out.println("User " + foundUser.getFirstName());
 		session.setAttribute("currentUser", foundUser);
 		
-		// throw exception if user does not exist
+		
+		//if (foundUser != ) {
+			// throw exception if user does not exist
+		//}
 	
 		return foundUser;
 	}
@@ -103,9 +105,11 @@ public class UserService {
 	
 	@PutMapping("/api/profile")
 	public User updateProfile(@RequestBody User user, HttpSession session) { 
+		User currentUser = (User) session.getAttribute("currentUser");
+		System.out.println("hwerrrr"+ user.getFirstName());
 		if (user != null) {
 		    session.setAttribute("user", user);
-		    return updateUser(user.getId(), user);
+		    return updateUser(currentUser.getId(), user);
 		} 
 		else { 
 			return null;
