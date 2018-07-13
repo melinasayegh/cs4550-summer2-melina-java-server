@@ -26,7 +26,6 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	
 	// execute whenever you see: http://localhost:8080/api/register
 	
 	@PostMapping("/api/user")

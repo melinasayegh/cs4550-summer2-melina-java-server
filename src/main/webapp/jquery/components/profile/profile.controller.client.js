@@ -2,7 +2,7 @@
 
     var $username, $password;
     var $firstName, $lastName, $phone, $email, $role, $dob;
-    var $updateBtn;// $logoutBtn;
+    var $updateBtn, $logoutBtn;
     // this should come from the session
     var currentUser = null;
 
@@ -12,6 +12,7 @@
 
         $username = $("#userNameFld");
         $password = $("#passwordFld");
+        $firstName = $("#firstNameFld");
         $lastName = $("#lastNameFld");
         $phone = $("#phoneFld");
         $email = $("#emailFld");
@@ -19,9 +20,10 @@
         $dob = $("#dobFld");
 
         $updateBtn = $("#updateBtn");
-        //$logoutBtn = $("#loginBtn");
+        $logoutBtn = $("#logoutBtn");
 
         $updateBtn.click(updateUser);
+        $logoutBtn.click(logout);
 
         profile()
             .then(renderUser)
@@ -67,6 +69,8 @@
 
         };
 
+        currentUser = user;
+
         var userObjStr = JSON.stringify(user);
 
         fetch('/api/profile', {
@@ -76,7 +80,7 @@
             headers: {
                 'content-type': 'application/json'
             }
-        })
+        }).then(renderUser(user))
     }
 
     function logout() {
@@ -86,7 +90,12 @@
             headers: {
                 'content-type': 'application/json'
             }
-        })
+        }).then(navigateToLogin)
+    }
+
+    function navigateToLogin() {
+        alert($username + "logged out!")
+        window.location.href = '../login/login.template.client.html';
     }
 
 })();

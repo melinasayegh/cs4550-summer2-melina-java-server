@@ -37,7 +37,7 @@
 
     // if login successful
     function loginSuccessful() {
-        alert(username + "logged in!")
+        alert($username + "logged in!")
         console.log(username);
         console.log("go to profile page");
         window.location.href = '../profile/profile.template.client.html';
