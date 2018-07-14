@@ -12,6 +12,9 @@
 
     registerBtn.click(registerHandler);
 
+    var userService = new UserServiceClient();
+
+    // register user
     function registerHandler() {
         var usernameStr = usernameFld.val();
         var passwordStr = passwordFld.val();
@@ -32,35 +35,31 @@
 
 
         // if passwords don't match, don't register
-        if (passwordStr != password2Str) {
+        if (passwordStr !== password2Str) {
             alert("Registration Failed - Passwords do not match.");
         }
 
         // if username field is blank, don't register
-        else if (usernameStr == "") {
+        else if (usernameStr === "") {
             alert("Registration Failed - Please create a username.");
 
         }
 
         // if password field is blank, don't register
-        else if (passwordStr == "") {
+        else if (passwordStr === "") {
             alert("Registration Failed - Please set a password.");
         }
 
         else {
-            fetch('/api/register', {
-                method: 'post',
-                body: userObjStr,
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then(registrationSuccessful)
+            // register this user
+            userService.register(userObjStr)
+                .then(registrationSuccessful)
         }
     }
 
+    // navigate to profile page
     function registrationSuccessful() {
-        alert("Registration Successful!")
+        alert("Registration Successful!");
         window.location.href = '../profile/profile.template.client.html';
     }
 

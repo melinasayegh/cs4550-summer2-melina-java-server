@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -69,7 +70,7 @@ public class UserService {
 			user.setEmail(newUser.getEmail());
 			user.setPhone(newUser.getPhone());
 			user.setRole(newUser.getRole());
-			user.setDOB(newUser.getDOB());
+			user.setDob(newUser.getDob());
 			
 			return userRepository.save(user);
 		}
@@ -90,11 +91,12 @@ public class UserService {
 		session.setAttribute("currentUser", foundUser);
 		
 		
-		//if (foundUser != ) {
+		//if (foundUser != null) {
 			// throw exception if user does not exist
+			return foundUser;
+		//} else {
+			//return Response.StatusCode = HttpStatusCode.Unauthorized;
 		//}
-	
-		return foundUser;
 	}
 	
 	@GetMapping("/api/profile") 

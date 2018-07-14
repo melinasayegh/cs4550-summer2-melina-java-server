@@ -41,16 +41,7 @@
     }
     init();
 
-
-    // retrieve all users and passes response to renderUsers
-    function findAllUsers() {
-        var url = "/api/user";
-        fetch(url)
-            .then(function(response) {
-                return response.json();
-            });
-    }
-
+    // render the table with the users in database
     function renderUsers(users) {
         console.log(users);
 
@@ -125,13 +116,17 @@
 
         userService.createUser(user)
             .then(function () {
-            userService
-                .findAllUsers()
-                .then(renderUsers);
+
+                clearFields();
+
+                $selectedUserId = null;
+
+                userService.findAllUsers()
+                    .then(renderUsers);
         });
     }
 
-    // update the user
+    // update user if it was selected from one of the rows in the table
     function updateUser() {
         console.log('updateUser');
         alert('Updating User');
@@ -145,20 +140,27 @@
             role: $roleStr.val()
         };
 
-        // need to give it just the id not whole user
-        userService.updateUser($selectedUserId, user)
-            .then(function () {
+        // if the user was not selected from the table then don't update the user
+        if ($selectedUserId == null) {
+            alert("User to be updated is not in table. Please select a user again.")
 
-                $selectedUserId = null;
+            // if the user was selected from the table, then update the user
+        } else {
+            userService.updateUser($selectedUserId, user)
+                .then(function () {
 
-                userService
-                    .findAllUsers()
-                    .then(renderUsers);
+                    $selectedUserId = null;
 
-                clearFields();
-        });
+                    userService
+                        .findAllUsers()
+                        .then(renderUsers);
+
+                    clearFields();
+                });
+        }
     }
 
+    // delete user at row where clicked delete
     function deleteUser(event) {
         console.log(event);
         alert("delete user")
@@ -189,7 +191,9 @@
     }
 
 
-    // get this row id and populate the first row (input fields) with this selected user's data
+    // get this row id and populate the first row (input fields)
+    // with this selected user's data
+    // disable the username field when the user has been selected
     function selectUser(event) {
         console.log('selectUser');
         console.log(event);
@@ -201,7 +205,6 @@
 
         userService.findUserById(id).then(
             function (user) {
-                //var editThisUser = new User(user);
                 $usernameStr.val(user.username);
                 $passwordStr.val(user.password);
                 $firstNameStr.val(user.firstName);
@@ -213,6 +216,7 @@
         );
     }
 
+    // clear the input fields
     function clearFields() {
         $usernameStr.val("");
         $passwordStr.val("");

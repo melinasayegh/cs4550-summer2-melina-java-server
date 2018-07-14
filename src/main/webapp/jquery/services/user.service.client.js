@@ -5,6 +5,11 @@ function UserServiceClient() {
     this.findUserById = findUserById;
     this.deleteUser = deleteUser;
     this.updateUser = updateUser;
+    this.register = register;
+    this.login = login;
+    this.profile = profile;
+    this.updateProfile = updateProfile;
+    this.logout = logout;
     this.url = 'http://localhost:8080/api/user';
     var self = this;
 
@@ -63,6 +68,64 @@ function UserServiceClient() {
 
         return fetch(url, {
             method: 'delete'
+        })
+    }
+
+
+    // POST method to register a user
+    function register(user, callback) {
+        return fetch('/api/register', {
+            method: 'post',
+            body: user,
+            credentials: 'include',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
+
+    // POST method to login
+    function login(user, callback) {
+        return fetch('/api/login', {
+            method: 'post',
+            body: user,
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+    }
+
+    // GET method to get user to populate profile
+    function profile(callback) {
+        return fetch('/api/profile', {
+            method: 'get',
+            credentials: 'include'
+        }).then(function (response) {
+            return response.json();
+        });
+    }
+
+    // PUT method to update profile
+    function updateProfile(user, callback) {
+        return fetch('/api/profile', {
+            method: 'put',
+            body: user,
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+    }
+
+    // POST method to logout
+    function logout(callback) {
+        return fetch('/api/logout', {
+            method: 'post',
+            credentials: 'include',
+            headers: {
+                'content-type': 'application/json'
+            }
         })
     }
 }

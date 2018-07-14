@@ -25,22 +25,13 @@
         $updateBtn.click(updateUser);
         $logoutBtn.click(logout);
 
-        profile()
+        // get profile of logged in user and render
+        userService.profile()
             .then(renderUser)
     }
     init();
 
-    function profile() {
-        return fetch('/api/profile', {
-            method: 'get',
-            credentials: 'include'
-        })
-            .then(function (response) {
-                return response.json();
-            });
-    }
-
-
+    // render the user, populate input fields with the logged in user
     function renderUser(user) {
         currentUser = user;
         $username.val(user.username);
@@ -53,8 +44,8 @@
         $dob.val(user.dateOfBirth);
     }
 
-
     // PUT
+    // update the user with the values of the input fields
     function updateUser() {
 
         var user = {
@@ -73,31 +64,20 @@
 
         var userObjStr = JSON.stringify(user);
 
-        fetch('/api/profile', {
-            method: 'put',
-            body: userObjStr,
-            credentials: 'include',
-            headers: {
-                'content-type': 'application/json'
-            }
-        }).then(function (user1) {
-            renderUser(user1);
+        userService.updateProfile(userObjStr)
+            .then(function (updatedUser) {
+            renderUser(updatedUser);
         })
     }
 
+    // terminate session, logout and navigate to login page
     function logout() {
-        fetch('/api/logout', {
-            method: 'post',
-            credentials: 'include',
-            headers: {
-                'content-type': 'application/json'
-            }
-        }).then(navigateToLogin)
+        userService.logout()
+            .then(navigateToLogin)
     }
 
+    // update link, navigate to login page
     function navigateToLogin() {
-        alert($username + "logged out!")
         window.location.href = '../login/login.template.client.html';
     }
-
 })();

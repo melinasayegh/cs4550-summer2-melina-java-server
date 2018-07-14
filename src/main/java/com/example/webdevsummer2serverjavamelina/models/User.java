@@ -23,7 +23,7 @@ public class User {
 	private String phone;
 	private String email;
 	private String role;
-	private Date DOB;
+	private Date dob;
 	
 	// getters & setters
 	public Integer getId() {
@@ -74,13 +74,12 @@ public class User {
 	public void setRole(String role) {
 		this.role = role;
 	}
-	public Date getDOB() {
-		return DOB;
+	public Date getDob() {
+		return dob;
 	}
-	public void setDOB(Date dOB) {
-		DOB = dOB;
+	public void setDob(Date dob) {
+		this.dob = dob;
 	}
-	
 	
 	public User(String username, String password) {
 		super();
