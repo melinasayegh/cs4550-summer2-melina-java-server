@@ -42,7 +42,13 @@
             var userObjStr = JSON.stringify(user);
 
             userService.login(userObjStr)
-                .then(loginSuccessful)
+                .then(function(response) {
+                    if (response.status === 401) {
+                        loginFailed();
+                    } else {
+                        loginSuccessful();
+                    }
+                })
         }
     }
 
@@ -51,5 +57,9 @@
         alert($username.val() + " logged in!");
         console.log($username.val() + " logged in");
         window.location.href = '../profile/profile.template.client.html';
+    }
+
+    function loginFailed() {
+        alert("User does not exist.");
     }
 })();

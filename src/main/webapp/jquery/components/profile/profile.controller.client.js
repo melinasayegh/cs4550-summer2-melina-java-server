@@ -4,7 +4,7 @@
     var $firstName, $lastName, $phone, $email, $role, $dob;
     var $updateBtn, $logoutBtn;
     // this should come from the session
-    var currentUser = null;
+    //var currentUser = null;
 
     var userService = new UserServiceClient();
 
@@ -33,7 +33,7 @@
 
     // render the user, populate input fields with the logged in user
     function renderUser(user) {
-        currentUser = user;
+       // currentUser = user;
         $username.val(user.username);
         $password.val(user.password);
         $firstName.val(user.firstName);
@@ -60,14 +60,11 @@
 
         };
 
-        currentUser = user;
+        //currentUser = user;
 
         var userObjStr = JSON.stringify(user);
 
-        userService.updateProfile(userObjStr)
-            .then(function (updatedUser) {
-            renderUser(updatedUser);
-        })
+        userService.updateProfile(userObjStr);
     }
 
     // terminate session, logout and navigate to login page
