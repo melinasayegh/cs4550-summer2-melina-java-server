@@ -12,6 +12,8 @@
 
     registerBtn.click(registerHandler);
 
+    var userService = new UserServiceClient();
+
     function registerHandler() {
         var usernameStr = usernameFld.val();
         var passwordStr = passwordFld.val();
@@ -48,14 +50,8 @@
         }
 
         else {
-            fetch('/api/register', {
-                method: 'post',
-                body: userObjStr,
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }).then(registrationSuccessful)
+            userService.register(userObjStr)
+                .then(registrationSuccessful)
         }
     }
 

@@ -41,16 +41,6 @@
     }
     init();
 
-
-    // retrieve all users and passes response to renderUsers
-    function findAllUsers() {
-        var url = "/api/user";
-        fetch(url)
-            .then(function(response) {
-                return response.json();
-            });
-    }
-
     function renderUsers(users) {
         console.log(users);
 

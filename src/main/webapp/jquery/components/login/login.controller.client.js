@@ -6,6 +6,8 @@
         $loginBtn,
         $registerBtn;
 
+    var userService = new UserServiceClient();
+
     function init() {
         $username    = $('#username');
         $password    = $('#password');
@@ -24,22 +26,15 @@
 
         var userObjStr = JSON.stringify(user);
 
-        fetch('/api/login', {
-            method: 'post',
-            body: userObjStr,
-            credentials: 'include',
-            headers: {
-                'content-type': 'application/json'
-            }
-        }).then(loginSuccessful)
+        userService.login(userObjStr)
+            .then(loginSuccessful)
     }
 
 
     // if login successful
     function loginSuccessful() {
-        alert($username + "logged in!")
-        console.log(username);
-        console.log("go to profile page");
+        alert($username.val() + " logged in!");
+        console.log($username.val() + " logged in");
         window.location.href = '../profile/profile.template.client.html';
     }
 
