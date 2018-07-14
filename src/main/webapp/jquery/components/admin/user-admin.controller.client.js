@@ -4,16 +4,13 @@
     var $usernameStr, $passwordStr;
     var $firstNameStr, $lastNameStr, $emailStr, $dobStr, $roleStr;
 
-    var $removeBtn, $editBtn, $createBtn, $updateBtn;
-    var $userRowTemplate, $tbody;
+    var $createBtn, $updateBtn;
+    var $tbody;
     var $selectedUserId;
 
-    // this is the user-input row
     var $template;
 
     var userService = new UserServiceClient();
-
-
 
     function init() {
 
@@ -115,9 +112,13 @@
 
         userService.createUser(user)
             .then(function () {
-            userService
-                .findAllUsers()
-                .then(renderUsers);
+
+                clearFields();
+
+                $selectedUserId = null;
+
+                userService.findAllUsers()
+                    .then(renderUsers);
         });
     }
 
@@ -135,18 +136,22 @@
             role: $roleStr.val()
         };
 
-        // need to give it just the id not whole user
-        userService.updateUser($selectedUserId, user)
-            .then(function () {
+        if ($selectedUserId == null) {
+            alert("User to be updated is not in table. Please select a user again.")
 
-                $selectedUserId = null;
+        } else {
+            userService.updateUser($selectedUserId, user)
+                .then(function () {
 
-                userService
-                    .findAllUsers()
-                    .then(renderUsers);
+                    $selectedUserId = null;
 
-                clearFields();
-        });
+                    userService
+                        .findAllUsers()
+                        .then(renderUsers);
+
+                    clearFields();
+                });
+        }
     }
 
     function deleteUser(event) {
