@@ -78,7 +78,6 @@
 
     // update link, navigate to login page
     function navigateToLogin() {
-        alert($username.val() + "logged out!");
         window.location.href = '../login/login.template.client.html';
     }
 })();

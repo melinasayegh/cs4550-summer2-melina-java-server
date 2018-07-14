@@ -20,37 +20,36 @@
 
     // log in
     function login() {
-        var user = {
-            "username": $username.val(),
-            "password": $password.val()
-        };
 
-        var userObjStr = JSON.stringify(user);
+        if ($username.val() === "" && $password.val() === "") {
+            alert("Please enter a username and a password.");
+        }
 
-        userService.login(userObjStr)
-            .then(loginSuccessful)
+        else if ($username.val() === "") {
+            alert("Please enter your username.");
+        }
+
+        else if ($password.val() === "") {
+            alert("Please enter your password.");
+        }
+
+        else {
+            var user = {
+                "username": $username.val(),
+                "password": $password.val()
+            };
+
+            var userObjStr = JSON.stringify(user);
+
+            userService.login(userObjStr)
+                .then(loginSuccessful)
+        }
     }
-
 
     // if login successful, update link to profile page
     function loginSuccessful() {
         alert($username.val() + " logged in!");
         console.log($username.val() + " logged in");
         window.location.href = '../profile/profile.template.client.html';
-    }
-
-    function loginFailed() {
-        alert("Oops, something's wrong.")
-        // if username is not in database
-        //if () {
-        //    alert("Login Failed - The user is incorrect.")
-        //}
-
-        // password is incorrect for the username
-        //else if () {
-        //    alert("Login Failed - Incorrect password.")
-        //} else {
-        //    navigateToProfile()
-        //}
     }
 })();

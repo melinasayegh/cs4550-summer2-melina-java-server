@@ -35,18 +35,18 @@
 
 
         // if passwords don't match, don't register
-        if (passwordStr != password2Str) {
+        if (passwordStr !== password2Str) {
             alert("Registration Failed - Passwords do not match.");
         }
 
         // if username field is blank, don't register
-        else if (usernameStr == "") {
+        else if (usernameStr === "") {
             alert("Registration Failed - Please create a username.");
 
         }
 
         // if password field is blank, don't register
-        else if (passwordStr == "") {
+        else if (passwordStr === "") {
             alert("Registration Failed - Please set a password.");
         }
 
@@ -59,7 +59,7 @@
 
     // navigate to profile page
     function registrationSuccessful() {
-        alert("Registration Successful!")
+        alert("Registration Successful!");
         window.location.href = '../profile/profile.template.client.html';
     }
 
