@@ -51,9 +51,16 @@
         }
 
         else {
+
             // register this user
             userService.register(userObjStr)
-                .then(registrationSuccessful)
+                .then(function(response) {
+                    if (response.status === 401) {
+                        registrationFailed();
+                    } else {
+                        registrationSuccessful();
+                    }
+                })
         }
     }
 
@@ -63,4 +70,8 @@
         window.location.href = '../profile/profile.template.client.html';
     }
 
-})()
+    // navigate to profile page
+    function registrationFailed() {
+        alert("This username already exists. Please use a different one.");
+    }
+})();

@@ -81,7 +81,9 @@ function UserServiceClient() {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
+        }).then(function (response) {
+            return response;
+        });
     }
 
     // POST method to login
@@ -93,7 +95,9 @@ function UserServiceClient() {
             headers: {
                 'content-type': 'application/json'
             }
-        })
+        }).then(function (response) {
+            return response;
+        });
     }
 
     // GET method to get user to populate profile
@@ -115,6 +119,8 @@ function UserServiceClient() {
             headers: {
                 'content-type': 'application/json'
             }
+        }).then(function (response) {
+            return response.json();
         })
     }
 

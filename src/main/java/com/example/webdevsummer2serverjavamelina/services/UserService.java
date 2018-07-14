@@ -6,6 +6,7 @@ import com.example.webdevsummer2serverjavamelina.repositories.UserRepository;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.connector.Response;
@@ -39,11 +40,20 @@ public class UserService {
 
 	@PostMapping("/api/register")
 	// instantiate user object and getting the user from the Request Body 
-	public User register(@RequestBody User user, HttpSession session) {
+	public User register(@RequestBody User user, HttpSession session, HttpServletResponse response) {
 		// save: returns instances of the same thing that it instantiates -- users
-		User cu = userRepository.save(user);
-		session.setAttribute("currentUser", cu);
-		return cu;
+		User foundUserName = userRepository.findUserByUsername(user.getUsername());
+		
+		if (foundUserName == null) {
+			System.out.println("New User");
+			User cu = userRepository.save(user);
+			session.setAttribute("currentUser", cu);
+			return cu;
+			
+		} else {
+			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+			return null;
+		}
 	}
 	
 	@GetMapping("/api/user/{userId}")
@@ -85,18 +95,17 @@ public class UserService {
 	
 	// login
 	@PostMapping("/api/login")
-	public User login(@RequestBody User user, HttpSession session) {
+	public User login(@RequestBody User user, HttpSession session, HttpServletResponse response) {
 		User foundUser = userRepository.findUserByCredentials(user.getUsername(), user.getPassword());
-		System.out.println("User " + foundUser.getFirstName());
-		session.setAttribute("currentUser", foundUser);
 		
-		
-		//if (foundUser != null) {
-			// throw exception if user does not exist
+		if (foundUser == null) {
+			response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+			return null;
+		} else {
+			System.out.println("User " + foundUser.getFirstName());
+			session.setAttribute("currentUser", foundUser);
 			return foundUser;
-		//} else {
-			//return Response.StatusCode = HttpStatusCode.Unauthorized;
-		//}
+		}
 	}
 	
 	@GetMapping("/api/profile") 
