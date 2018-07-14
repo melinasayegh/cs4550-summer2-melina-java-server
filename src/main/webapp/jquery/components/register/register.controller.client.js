@@ -14,6 +14,7 @@
 
     var userService = new UserServiceClient();
 
+    // register user
     function registerHandler() {
         var usernameStr = usernameFld.val();
         var passwordStr = passwordFld.val();
@@ -50,11 +51,13 @@
         }
 
         else {
+            // register this user
             userService.register(userObjStr)
                 .then(registrationSuccessful)
         }
     }
 
+    // navigate to profile page
     function registrationSuccessful() {
         alert("Registration Successful!")
         window.location.href = '../profile/profile.template.client.html';

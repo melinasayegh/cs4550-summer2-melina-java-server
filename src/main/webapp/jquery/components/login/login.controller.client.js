@@ -18,6 +18,7 @@
     }
     init();
 
+    // log in
     function login() {
         var user = {
             "username": $username.val(),
@@ -31,7 +32,7 @@
     }
 
 
-    // if login successful
+    // if login successful, update link to profile page
     function loginSuccessful() {
         alert($username.val() + " logged in!");
         console.log($username.val() + " logged in");
@@ -39,7 +40,6 @@
     }
 
     function loginFailed() {
-
         alert("Oops, something's wrong.")
         // if username is not in database
         //if () {

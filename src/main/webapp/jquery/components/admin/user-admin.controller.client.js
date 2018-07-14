@@ -4,13 +4,16 @@
     var $usernameStr, $passwordStr;
     var $firstNameStr, $lastNameStr, $emailStr, $dobStr, $roleStr;
 
-    var $createBtn, $updateBtn;
-    var $tbody;
+    var $removeBtn, $editBtn, $createBtn, $updateBtn;
+    var $userRowTemplate, $tbody;
     var $selectedUserId;
 
+    // this is the user-input row
     var $template;
 
     var userService = new UserServiceClient();
+
+
 
     function init() {
 
@@ -38,6 +41,7 @@
     }
     init();
 
+    // render the table with the users in database
     function renderUsers(users) {
         console.log(users);
 
@@ -122,7 +126,7 @@
         });
     }
 
-    // update the user
+    // update user if it was selected from one of the rows in the table
     function updateUser() {
         console.log('updateUser');
         alert('Updating User');
@@ -136,9 +140,11 @@
             role: $roleStr.val()
         };
 
+        // if the user was not selected from the table then don't update the user
         if ($selectedUserId == null) {
             alert("User to be updated is not in table. Please select a user again.")
 
+            // if the user was selected from the table, then update the user
         } else {
             userService.updateUser($selectedUserId, user)
                 .then(function () {
@@ -154,6 +160,7 @@
         }
     }
 
+    // delete user at row where clicked delete
     function deleteUser(event) {
         console.log(event);
         alert("delete user")
@@ -184,7 +191,9 @@
     }
 
 
-    // get this row id and populate the first row (input fields) with this selected user's data
+    // get this row id and populate the first row (input fields)
+    // with this selected user's data
+    // disable the username field when the user has been selected
     function selectUser(event) {
         console.log('selectUser');
         console.log(event);
@@ -196,7 +205,6 @@
 
         userService.findUserById(id).then(
             function (user) {
-                //var editThisUser = new User(user);
                 $usernameStr.val(user.username);
                 $passwordStr.val(user.password);
                 $firstNameStr.val(user.firstName);
@@ -208,6 +216,7 @@
         );
     }
 
+    // clear the input fields
     function clearFields() {
         $usernameStr.val("");
         $passwordStr.val("");

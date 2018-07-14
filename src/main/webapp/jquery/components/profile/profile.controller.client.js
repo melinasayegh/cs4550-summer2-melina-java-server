@@ -25,11 +25,13 @@
         $updateBtn.click(updateUser);
         $logoutBtn.click(logout);
 
+        // get profile of logged in user and render
         userService.profile()
             .then(renderUser)
     }
     init();
 
+    // render the user, populate input fields with the logged in user
     function renderUser(user) {
         currentUser = user;
         $username.val(user.username);
@@ -43,6 +45,7 @@
     }
 
     // PUT
+    // update the user with the values of the input fields
     function updateUser() {
 
         var user = {
@@ -67,14 +70,15 @@
         })
     }
 
+    // terminate session, logout and navigate to login page
     function logout() {
         userService.logout()
             .then(navigateToLogin)
     }
 
+    // update link, navigate to login page
     function navigateToLogin() {
         alert($username.val() + "logged out!");
         window.location.href = '../login/login.template.client.html';
     }
-
 })();
