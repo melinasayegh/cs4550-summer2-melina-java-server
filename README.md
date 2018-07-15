@@ -5,4 +5,4 @@ Assignment 1: Developing Web Applications
 JavaScript, Java, SQL
 
 ***
-Heroku App: https://cs4550-summer2-melina-sayegh.herokuapp.com/
+Heroku App: https://webdev-server-java-melina.herokuapp.com/
