@@ -60,11 +60,10 @@
 
         };
 
-        //currentUser = user;
-
         var userObjStr = JSON.stringify(user);
 
-        userService.updateProfile(userObjStr);
+        userService.updateProfile(userObjStr)
+            .then(renderUser(userObjStr));
     }
 
     // terminate session, logout and navigate to login page
