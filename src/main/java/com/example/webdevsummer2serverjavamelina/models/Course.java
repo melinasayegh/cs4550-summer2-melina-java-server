@@ -1,6 +1,8 @@
 package com.example.webdevsummer2serverjavamelina.models;
 
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,6 +20,8 @@ public class Course {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date modified;
 	
+	@OneToMany(mappedBy="course")
+	private List<Module> modules;
 	
 	// setters and getters for all private fields
 
@@ -51,6 +55,14 @@ public class Course {
 
 	public void setModified(Date modified) {
 		this.modified = modified;
+	}
+
+	public List<Module> getModules() {
+		return modules;
+	}
+
+	public void setModules(List<Module> modules) {
+		this.modules = modules;
 	}
 
 }
