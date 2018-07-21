@@ -117,7 +117,6 @@ public class UserService {
 	@PutMapping("/api/profile")
 	public User updateProfile(@RequestBody User user, HttpSession session) { 
 		User currentUser = (User) session.getAttribute("currentUser");
-		System.out.println("hwerrrr"+ user.getFirstName());
 		if (user != null) {
 		    session.setAttribute("user", user);
 		    return updateUser(currentUser.getId(), user);

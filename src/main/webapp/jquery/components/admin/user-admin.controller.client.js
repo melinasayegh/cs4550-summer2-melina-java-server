@@ -1,8 +1,8 @@
 //IIFE
 (function () {
 
-    var $usernameStr, $passwordStr;
-    var $firstNameStr, $lastNameStr, $emailStr, $dobStr, $roleStr;
+    var $usernameFld, $passwordFld;
+    var $firstNameFld, $lastNameFld, $emailFld, $phoneFld, $dobFld, $roleFld;
 
     var $removeBtn, $editBtn, $createBtn, $updateBtn;
     var $userRowTemplate, $tbody;
@@ -25,13 +25,14 @@
         $createBtn   = $('#createBtn');
         $updateBtn   = $('#updateBtn');
 
-        $usernameStr = $('#usernameFld');
-        $passwordStr = $('#passwordFld');
-        $firstNameStr = $('#firstNameFld');
-        $lastNameStr = $('#lastNameFld');
-        $emailStr = $('#emailFld');
-        $dobStr = $('#dobFld');
-        $roleStr = $('#roleFld');
+        $usernameFld = $('#usernameFld');
+        $passwordFld = $('#passwordFld');
+        $firstNameFld = $('#firstNameFld');
+        $lastNameFld = $('#lastNameFld');
+        $emailFld = $('#emailFld');
+        $phoneFld = $('#phoneFld')
+        $dobFld = $('#dobFld');
+        $roleFld = $('#roleFld');
 
         userService.findAllUsers()
             .then(renderUsers);
@@ -57,7 +58,7 @@
             tr.append(td);
 
             td = $('<td>');
-            td.append(user.password);
+            td.append("*****");
             tr.append(td);
 
             td = $('<td>');
@@ -70,6 +71,10 @@
 
             td = $('<td>');
             td.append(user.email);
+            tr.append(td);
+
+            td = $('<td>');
+            td.append(user.phone);
             tr.append(td);
 
             td = $('<td>');
@@ -103,15 +108,17 @@
     // updates the list of users on server response
     function createUser() {
         console.log('createUser');
-        alert('Creating User');
+        alert('Created User.');
 
         var user = {
-            username: $usernameStr.val(),
-            password: $passwordStr.val(),
-            firstName: $firstNameStr.val(),
-            lastName: $lastNameStr.val(),
-            email: $emailStr.val(),
-            role: $roleStr.val()
+            username: $usernameFld.val(),
+            password: $passwordFld.val(),
+            firstName: $firstNameFld.val(),
+            lastName: $lastNameFld.val(),
+            email: $emailFld.val(),
+            phone: $phoneFld.val(),
+            dob: $dobFld.val(),
+            role: $roleFld.val()
         };
 
         userService.createUser(user)
@@ -128,24 +135,28 @@
 
     // update user if it was selected from one of the rows in the table
     function updateUser() {
-        console.log('updateUser');
-        alert('Updating User');
 
         var user = {
-            username: $usernameStr.val(),
-            password: $passwordStr.val(),
-            firstName: $firstNameStr.val(),
-            lastName: $lastNameStr.val(),
-            email: $emailStr.val(),
-            role: $roleStr.val()
+            username: $usernameFld.val(),
+            password: $passwordFld.val(),
+            firstName: $firstNameFld.val(),
+            lastName: $lastNameFld.val(),
+            email: $emailFld.val(),
+            phone: $phoneFld.val(),
+            dob: $dobFld.val(),
+            role: $roleFld.val()
         };
 
         // if the user was not selected from the table then don't update the user
-        if ($selectedUserId == null) {
-            alert("User to be updated is not in table. Please select a user again.")
+        if ($selectedUserId === null) {
+            alert("User was not selected from table. Please select a user again.")
 
             // if the user was selected from the table, then update the user
         } else {
+
+            console.log('updateUser');
+            alert('Updating User');
+
             userService.updateUser($selectedUserId, user)
                 .then(function () {
 
@@ -163,7 +174,7 @@
     // delete user at row where clicked delete
     function deleteUser(event) {
         console.log(event);
-        alert("delete user")
+        alert("Deleted user.");
         var $button = $(event.currentTarget);
         var id = $button.attr('id');
 
@@ -199,31 +210,31 @@
         console.log(event);
 
         var $button = $(event.currentTarget);
-        var id = $button.attr('id');
+        $selectedUserId = $button.attr('id');
 
-        $selectedUserId = id;
-
-        userService.findUserById(id).then(
+        userService.findUserById($selectedUserId).then(
             function (user) {
-                $usernameStr.val(user.username);
-                $passwordStr.val(user.password);
-                $firstNameStr.val(user.firstName);
-                $lastNameStr.val(user.lastName);
-                $emailStr.val(user.email);
-                $dobStr.val(user.dateOfBirth);
-                $roleStr.val(user.role);
+                $usernameFld.val(user.username);
+                $passwordFld.val(user.password);
+                $firstNameFld.val(user.firstName);
+                $lastNameFld.val(user.lastName);
+                $emailFld.val(user.email);
+                $phoneFld.val(user.phone);
+                $dobFld.val(user.dateOfBirth);
+                $roleFld.val(user.role);
             }
         );
     }
 
     // clear the input fields
     function clearFields() {
-        $usernameStr.val("");
-        $passwordStr.val("");
-        $firstNameStr.val("");
-        $lastNameStr.val("");
-        $emailStr.val("");
-        $dobStr.val("");
-        $roleStr.val("");
+        $usernameFld.val("");
+        $passwordFld.val("");
+        $firstNameFld.val("");
+        $lastNameFld.val("");
+        $emailFld.val("");
+        $phoneFld.val("");
+        $dobFld.val("");
+        $roleFld.val("");
     }
 })();

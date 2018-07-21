@@ -43,10 +43,17 @@
 
             userService.login(userObjStr)
                 .then(function(response) {
+                    // login failed because the user with these credentials do  not exist
                     if (response.status === 401) {
                         loginFailed();
-                    } else {
+                        // login successful
+                    } else if (response.status === 200) {
                         loginSuccessful();
+                        // if there is another error that isn't because of the
+                        // login credentials being incorrect then there is a different
+                        // reason that login failed
+                    } else {
+                        loginFailedUnknown();
                     }
                 })
         }
@@ -61,5 +68,9 @@
 
     function loginFailed() {
         alert("User does not exist.");
+    }
+
+    function loginFailedUnknown() {
+        alert("Login Failed.");
     }
 })();

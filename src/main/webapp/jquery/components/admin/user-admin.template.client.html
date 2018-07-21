@@ -21,24 +21,25 @@
                 <thead>
                     <!-- Titles - 1st row in Table-->
                     <tr>
-                        <th class="span1">Username</th>
-                        <th class="span1">Password</th>
-                        <th class="span1">First Name</th>
-                        <th class="span1">Last Name</th>
-                        <th class="span1">Email</th>
-                        <th class="span1">Date of Birth</th>
-                        <th class="span1">Role</th>
-                        <th class="span1">&nbsp</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone Number</th>
+                        <th scope="col">Date of Birth</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">&nbsp</th>
                     </tr>
 
                     <!-- Input Fields - 2nd row in Table-->
                     <tr class="wbdv-form">
-                        <td class="span1">
+                        <td scope="col">
                             <input id="usernameFld"
                                    placeholder="Username"
                                    class="form-control input-small"/>
                         </td>
-                        <td class="span1">
+                        <td scope="col">
                             <input id="passwordFld"
                                    placeholder="Password"
                                    class="form-control input-small" />
@@ -52,13 +53,18 @@
                             <input id="lastNameFld"
                                    placeholder="Last Name"
                                    class="form-control input-small" />
-                        </td class="span1">
-                        <td>
+                        </td>
+                        <td class="span1">
                             <input id="emailFld"
                                    placeholder="Email"
                                    class="form-control input-small" />
-                        </td class="span1">
-                        <td>
+                        </td>
+                        <td class="span1">
+                            <input id="phoneFld"
+                                   placeholder="Phone Number"
+                                   class="form-control input-small" />
+                        </td>
+                        <td class="span1">
                             <input id="dobFld"
                                    type="date"
                                    class="form-control input-small"
@@ -98,6 +104,7 @@
                         <td>Jane</td>
                         <td>Doe</td>
                         <td>jane@doe.com</td>
+                        <td>716-123-1234</td>
                         <td>01/01/1995</td>
                         <td>Admin</td>
                         <td>
@@ -113,6 +120,7 @@
                         <td>John</td>
                         <td>Doe</td>
                         <td>john@doe.com</td>
+                        <td>716-123-1234</td>
                         <td>01/01/1990</td>
                         <td>Admin</td>
                         <td>
