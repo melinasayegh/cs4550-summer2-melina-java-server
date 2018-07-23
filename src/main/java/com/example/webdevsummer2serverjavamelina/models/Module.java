@@ -52,4 +52,12 @@ public class Module {
 		this.course = course;
 	}
 
+	public List<Lesson> getLessons() {
+		return lessons;
+	}
+
+	public void setLessons(List<Lesson> lessons) {
+		this.lessons = lessons;
+	}
+
 }
