@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.webdevsummer2serverjavamelina.models.Course;
-import com.example.webdevsummer2serverjavamelina.models.User;
 import com.example.webdevsummer2serverjavamelina.repositories.CourseRepository;
 
 @RestController
@@ -28,9 +27,16 @@ public class CourseServices {
 		return courseRepository.findAll(); 
 	}
 	
+	@GetMapping("/api/course/{courseId}")
+	public Optional<Course> findCourseById(@PathVariable("courseId") String courseId) {
+		int id = Integer.parseInt(courseId);
+		return courseRepository.findById(id);
+	}
+	
 	@PostMapping("/api/course")
 	public Course createCourse(@RequestBody Course course) {
-		return courseRepository.save(course);
+		Course cc = courseRepository.save(course);
+		return cc;
 	}
 	
 	@DeleteMapping("/api/course/{courseId}")
@@ -39,13 +45,15 @@ public class CourseServices {
 	}
 	
 	@PutMapping("/api/course/{courseId}")
-	public Course updateCourse(
-			@PathVariable("courseId") int id,
+	public Course updateCourse(@PathVariable("courseId") int courseId,
 			@RequestBody Course newCourse) {
-		Optional<Course> optional = courseRepository.findById(id);
+		
+		Optional<Course> optional = courseRepository.findById(courseId);
 		if (optional.isPresent()) {
 			Course updatedCourse = optional.get();
 			updatedCourse.setTitle(newCourse.getTitle());
+			updatedCourse.setOwner(newCourse.getOwner());
+			updatedCourse.setModified(newCourse.getModified());
 			
 			return courseRepository.save(updatedCourse);
 		}

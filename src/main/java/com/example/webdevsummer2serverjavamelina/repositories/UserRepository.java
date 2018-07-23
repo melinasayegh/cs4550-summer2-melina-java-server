@@ -1,8 +1,6 @@
 package com.example.webdevsummer2serverjavamelina.repositories;
 import com.example.webdevsummer2serverjavamelina.models.User;
 
-import java.util.Optional;
-
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

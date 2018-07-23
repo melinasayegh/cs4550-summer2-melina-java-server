@@ -16,6 +16,8 @@ public class Course {
 	
 	private String title;
 	
+	private String owner;
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date created;
 	
@@ -42,6 +44,14 @@ public class Course {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
 	}
 
 	public Date getCreated() {
