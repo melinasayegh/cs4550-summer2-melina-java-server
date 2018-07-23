@@ -1,4 +1,3 @@
-
 -- database - course table
 
 CREATE TABLE `course` (
@@ -6,5 +5,6 @@ CREATE TABLE `course` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL,
   `title` varchar(255) DEFAULT NULL,
+  `owner` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8;
