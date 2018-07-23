@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -60,6 +61,27 @@ public class ModuleService {
 	public void deleteModule(@PathVariable("mId") int moduleId) {
 		moduleRepository.deleteById(moduleId);
 	}
-
-
+	
+	@GetMapping("/api/module/{moduleId}")
+	public Optional<Module> findModuleById(@PathVariable("moduleId") String moduleId) {
+		int id = Integer.parseInt(moduleId);
+		return moduleRepository.findById(id);
+	}
+	
+	@PutMapping("/api/module/{moduleId}")
+	public Module updateModule(@PathVariable("moduleId") int moduleId,
+			@RequestBody Module newModule) {
+		
+		Optional<Module> optional = moduleRepository.findById(moduleId);
+		if (optional.isPresent()) {
+			Module updatedModule = optional.get();
+			updatedModule.setTitle(newModule.getTitle());
+			updatedModule.setLessons(newModule.getLessons());
+			updatedModule.setCourse(newModule.getCourse());
+			
+			return moduleRepository.save(updatedModule);
+		}
+		return null;
+		// or throw exception
+	}
 }
