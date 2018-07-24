@@ -33,7 +33,7 @@ public class LessonService {
 	@Autowired
 	LessonRepository lessonRepository;
 	
-	@PostMapping("/api/course/{courseId}/module/{moduleId")
+	@PostMapping("/api/course/{courseId}/module/{moduleId}/lesson")
 	public Lesson createLesson(@PathVariable("courseId") int courseId,
 			@PathVariable("moduleId") int moduleId,
 			@RequestBody Lesson newLesson) {
