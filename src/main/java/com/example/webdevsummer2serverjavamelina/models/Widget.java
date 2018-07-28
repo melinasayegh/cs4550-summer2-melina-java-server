@@ -1,0 +1,85 @@
+package com.example.webdevsummer2serverjavamelina.models;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+public class Widget {
+	
+	@Id // unique identifier
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
+	private String name;
+	private Integer orderRank;
+	private String text;
+	private String className;
+	private String style;
+	private String width;
+	private String height;
+	
+	@ManyToOne
+	@JsonIgnore
+	private Lesson lesson;
+	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Integer getOrderRank() {
+		return orderRank;
+	}
+	public void setOrderRank(Integer orderRank) {
+		this.orderRank = orderRank;
+	}
+	public String getText() {
+		return text;
+	}
+	public void setText(String text) {
+		this.text = text;
+	}
+	public String getClassName() {
+		return className;
+	}
+	public void setClassName(String className) {
+		this.className = className;
+	}
+	public String getStyle() {
+		return style;
+	}
+	public void setStyle(String style) {
+		this.style = style;
+	}
+	public String getWidth() {
+		return width;
+	}
+	public void setWidth(String width) {
+		this.width = width;
+	}
+	public String getHeight() {
+		return height;
+	}
+	public void setHeight(String height) {
+		this.height = height;
+	}
+	public Lesson getLesson() {
+		return lesson;
+	}
+	public void setLesson(Lesson lesson) {
+		this.lesson = lesson;
+	}
+}
