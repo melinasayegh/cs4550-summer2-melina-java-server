@@ -1,4 +1,4 @@
-## webdev-summer2-melina-java-server
+## webdev-summer2-java-server-melina
 
 CS 4550 Web Development
 Assignment 1: Developing Web Applications
