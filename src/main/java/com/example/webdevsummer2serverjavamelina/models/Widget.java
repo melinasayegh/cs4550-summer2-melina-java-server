@@ -1,16 +1,17 @@
 package com.example.webdevsummer2serverjavamelina.models;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 public class Widget {
 	
 	@Id // unique identifier
@@ -81,5 +82,6 @@ public class Widget {
 	}
 	public void setLesson(Lesson lesson) {
 		this.lesson = lesson;
-	}
+	}	
 }
+

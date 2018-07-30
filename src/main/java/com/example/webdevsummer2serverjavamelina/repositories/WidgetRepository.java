@@ -1,5 +1,10 @@
 package com.example.webdevsummer2serverjavamelina.repositories;
 
-public interface WidgetRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import com.example.webdevsummer2serverjavamelina.models.Widget;
+
+
+public interface WidgetRepository extends CrudRepository<Widget, Integer> {
 
 }

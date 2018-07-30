@@ -72,7 +72,7 @@ public class LessonService {
 	}
 	
 	@DeleteMapping("/api/lesson/{lId}")
-	public void deleteModule(@PathVariable("lId") int lessonId) {
+	public void deleteLesson(@PathVariable("lId") int lessonId) {
 		lessonRepository.deleteById(lessonId);
 	}
 	
