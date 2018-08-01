@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 @Entity
 public class List extends Widget {
 	private String listItems;
-	private Boolean listType;
+	private ListType listType;
 	
 	public String getListItems() {
 		return listItems;
@@ -13,10 +13,10 @@ public class List extends Widget {
 	public void setListItems(String listItems) {
 		this.listItems = listItems;
 	}
-	public Boolean getListType() {
+	public ListType getListType() {
 		return listType;
 	}
-	public void setListType(Boolean listType) {
+	public void setListType(ListType listType) {
 		this.listType = listType;
 	}
 }

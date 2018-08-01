@@ -101,14 +101,22 @@ public class WidgetService {
 			
 			Widget updateWidget = optional.get();
 			
-			updateWidget.setClassName(newWidget.getClassName());
-			updateWidget.setHeight(newWidget.getHeight());
-			updateWidget.setLesson(newWidget.getLesson());
 			updateWidget.setName(newWidget.getName());
 			updateWidget.setOrderRank(newWidget.getOrderRank());
-			updateWidget.setStyle(newWidget.getStyle());
 			updateWidget.setText(newWidget.getText());
+			updateWidget.setClassName(newWidget.getClassName());
+			updateWidget.setStyle(newWidget.getStyle());
 			updateWidget.setWidth(newWidget.getWidth());
+			updateWidget.setHeight(newWidget.getHeight());
+			updateWidget.setLesson(newWidget.getLesson());
+			updateWidget.setWidgetType(newWidget.getWidgetType());
+			
+			// individual fields
+			updateWidget.setSize(newWidget.getSize());
+			updateWidget.setHref(newWidget.getHref());
+			updateWidget.setSrc(newWidget.getSrc());
+			updateWidget.setListItems(newWidget.getListItems());
+			updateWidget.setListType(newWidget.getListType());
 			
 			return widgetRepository.save(updateWidget);
 		}
