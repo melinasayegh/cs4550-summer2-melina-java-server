@@ -63,7 +63,7 @@
         var userObjStr = JSON.stringify(user);
 
         userService.updateProfile(userObjStr)
-            .then(renderUser(userObjStr));
+            .then(renderUser(user));
     }
 
     // terminate session, logout and navigate to login page
