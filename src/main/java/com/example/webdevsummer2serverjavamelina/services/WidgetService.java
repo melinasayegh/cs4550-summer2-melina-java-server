@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-//import com.example.webdevsummer2serverjavamelina.models.Course;
 import com.example.webdevsummer2serverjavamelina.models.Lesson;
-//import com.example.webdevsummer2serverjavamelina.models.Module;
 import com.example.webdevsummer2serverjavamelina.models.Widget;
 import com.example.webdevsummer2serverjavamelina.repositories.CourseRepository;
 import com.example.webdevsummer2serverjavamelina.repositories.LessonRepository;
@@ -24,19 +22,13 @@ import com.example.webdevsummer2serverjavamelina.repositories.ModuleRepository;
 import com.example.webdevsummer2serverjavamelina.repositories.WidgetRepository;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins="*")
 public class WidgetService {
 	
 	@PostMapping("/api/widget")
 	public void saveWidgets(@RequestBody List<Widget> widgets) {
 		
 	}
-	
-	@Autowired
-	CourseRepository courseRepository;
-	
-	@Autowired
-	ModuleRepository moduleRepository;
 	
 	@Autowired
 	LessonRepository lessonRepository;
@@ -71,19 +63,13 @@ public class WidgetService {
 		return null;
 	}
 	
-	//@PostMapping("/api/course/{courseId}/module/{moduleId}/lesson/{lessonId}/widget")
 	@PostMapping("/api/lesson/{lessonId}/widget")
 	public Widget createWidget(
-			//@PathVariable("courseId") int courseId,
-			//@PathVariable("moduleId") int moduleId,
 			@PathVariable("lessonId") int lessonId,
 			@RequestBody Widget newWidget) {
 		
-		//Optional<Course> givenCourse = courseRepository.findById(courseId);
-		//Optional<Module> givenModule = moduleRepository.findById(moduleId);
 		Optional<Lesson> givenLesson = lessonRepository.findById(lessonId);
 		
-		//if(givenCourse.isPresent() && givenModule.isPresent() && givenLesson.isPresent()) {
 		if(givenLesson.isPresent()) {
 			Lesson lesson = givenLesson.get();
 			newWidget.setLesson(lesson);
