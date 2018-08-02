@@ -1,6 +1,7 @@
 package com.example.webdevsummer2serverjavamelina.services;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,31 @@ public class WidgetService {
 	
 	@Autowired
 	WidgetRepository widgetRepository;
+	
+	@PostMapping("/api/lesson/{lessonId}/widgets")
+	public List<Widget>  saveWidgets(@PathVariable("lessonId") int lessonId, @RequestBody List<Widget> widgets) {
+		
+		Optional<Lesson> givenLesson = lessonRepository.findById(lessonId);
+		
+		//if(givenCourse.isPresent() && givenModule.isPresent() && givenLesson.isPresent()) {
+		if(givenLesson.isPresent()) {
+			
+			Lesson lesson = givenLesson.get();
+			
+			List<Widget> reUpdate = lesson.getWidgets();
+			
+			for (Widget removeW : reUpdate) {
+				this.deleteWidget(removeW.getId());
+			}
+			
+			for (Widget w : widgets) {
+				this.createWidget(lessonId, w);
+			}
+			
+			return lesson.getWidgets();
+		}
+		return null;
+	}
 	
 	//@PostMapping("/api/course/{courseId}/module/{moduleId}/lesson/{lessonId}/widget")
 	@PostMapping("/api/lesson/{lessonId}/widget")
