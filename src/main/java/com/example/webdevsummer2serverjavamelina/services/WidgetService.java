@@ -49,12 +49,14 @@ public class WidgetService {
 		
 		Optional<Lesson> givenLesson = lessonRepository.findById(lessonId);
 		
-		//if(givenCourse.isPresent() && givenModule.isPresent() && givenLesson.isPresent()) {
 		if(givenLesson.isPresent()) {
 			
 			Lesson lesson = givenLesson.get();
 			
 			List<Widget> reUpdate = lesson.getWidgets();
+			
+			// can't just update widgets, because there may be some deleted, and there may be new ones
+			// need to delete all and create new ones
 			
 			for (Widget removeW : reUpdate) {
 				this.deleteWidget(removeW.getId());
