@@ -43,10 +43,10 @@ public class Widget {
 	private String listItems;
 	private ListType listType;
 	
-	
 	@ManyToOne
 	@JsonIgnore
 	private Lesson lesson;
+	
 	
 	public Integer getId() {
 		return id;

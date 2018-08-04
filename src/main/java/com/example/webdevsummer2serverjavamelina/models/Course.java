@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 public class Course {
 	
@@ -25,7 +23,6 @@ public class Course {
 	private Date modified;
 	
 	@OneToMany(mappedBy="course")
-	@JsonIgnore
 	private List<Module> modules;
 	
 	// setters and getters for all private fields

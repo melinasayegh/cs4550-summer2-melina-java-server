@@ -24,7 +24,6 @@ public class Module {
 	private Course course;
 	
 	@OneToMany(mappedBy="module")
-	@JsonIgnore
 	private List<Lesson> lessons;
 
 	
